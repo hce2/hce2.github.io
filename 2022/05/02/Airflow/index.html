@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hce2.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Step 01. Dags 폴더 생성프로젝트 폴더(&#x3D;airflow) 하단에 Dags 폴더를 만든다.  dags 폴더를 확인한다.  12$ lsairflow.cfg  airflow.db  dags  logs  venv  webserver_config.py  Step 02. 가상의 데이터 생성이번 테스트에서 사용할 라이브러리가 없다면 우선 설치한다. 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Airflow 데이터 파이프라인 구축 예제">
+<meta property="og:url" content="https://hce2.github.io/2022/05/02/Airflow/index.html">
+<meta property="og:site_name" content="CHAEEUN">
+<meta property="og:description" content="Step 01. Dags 폴더 생성프로젝트 폴더(&#x3D;airflow) 하단에 Dags 폴더를 만든다.  dags 폴더를 확인한다.  12$ lsairflow.cfg  airflow.db  dags  logs  venv  webserver_config.py  Step 02. 가상의 데이터 생성이번 테스트에서 사용할 라이브러리가 없다면 우선 설치한다. 1">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://hce2.github.io/images/Airflow/Untitled.png">
+<meta property="article:published_time" content="2022-05-02T08:10:05.000Z">
+<meta property="article:modified_time" content="2022-05-03T02:26:47.573Z">
+<meta property="article:author" content="CHAEEUN">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="헥소">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hce2.github.io/images/Airflow/Untitled.png">
+
+<link rel="canonical" href="https://hce2.github.io/2022/05/02/Airflow/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Airflow 데이터 파이프라인 구축 예제 | CHAEEUN</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHAEEUN</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/05/02/Airflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CHAEEUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHAEEUN">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Airflow 데이터 파이프라인 구축 예제
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-02 17:10:05" itemprop="dateCreated datePublished" datetime="2022-05-02T17:10:05+09:00">2022-05-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-03 11:26:47" itemprop="dateModified" datetime="2022-05-03T11:26:47+09:00">2022-05-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Setting/" itemprop="url" rel="index"><span itemprop="name">Setting</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Step-01-Dags-폴더-생성"><a href="#Step-01-Dags-폴더-생성" class="headerlink" title="Step 01. Dags 폴더 생성"></a><strong>Step 01. Dags 폴더 생성</strong></h1><p>프로젝트 폴더(&#x3D;airflow) 하단에 Dags 폴더를 만든다.</p>
+<ul>
+<li>dags 폴더를 확인한다.</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">ls</span></span><br><span class="line">airflow.cfg  airflow.db  dags  logs  venv  webserver_config.py</span><br></pre></td></tr></table></figure>
+
+<h1 id="Step-02-가상의-데이터-생성"><a href="#Step-02-가상의-데이터-생성" class="headerlink" title="Step 02. 가상의 데이터 생성"></a><strong>Step 02. 가상의 데이터 생성</strong></h1><p>이번 테스트에서 사용할 라이브러리가 없다면 우선 설치한다.</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> pip3 install faker pandas</span><br></pre></td></tr></table></figure>
+
+<p>faker 라이브러리를 활용하여 가상의 데이터를 생성한다. (파일 경로 : data&#x2F;step01_writecsv.py)</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from faker import Faker</span><br><span class="line">import csv</span><br><span class="line">output=open(<span class="string">&#x27;data.csv&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">fake=Faker()</span><br><span class="line">header=[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;age&#x27;</span>,<span class="string">&#x27;street&#x27;</span>,<span class="string">&#x27;city&#x27;</span>,<span class="string">&#x27;state&#x27;</span>,<span class="string">&#x27;zip&#x27;</span>,<span class="string">&#x27;lng&#x27;</span>,<span class="string">&#x27;lat&#x27;</span>]</span><br><span class="line">mywriter=csv.writer(output)</span><br><span class="line">mywriter.writerow(header)</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">r</span> <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    mywriter.writerow([<span class="type">fake.name</span>(),<span class="type">fake.random_int</span>(<span class="type">min</span>=<span class="number">18</span>, <span class="type">max</span>=<span class="number">80</span>, <span class="type">step</span>=<span class="number">1</span>), <span class="type">fake.street_address</span>(), <span class="type">fake.city</span>(),<span class="type">fake.state</span>(),<span class="type">fake.zipcode</span>(),<span class="type">fake.longitude</span>(),<span class="type">fake.latitude</span>()])</span><br><span class="line">output.close()</span><br></pre></td></tr></table></figure>
+
+<p>생성된 후, 파일을 확인하도록 한다.</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xiromjr@xiromjr:/mnt/c/airflow<span class="literal">-test</span>/<span class="keyword">data</span><span class="variable">$</span> <span class="built_in">ls</span></span><br><span class="line">data.csv  step01_writecsv.py</span><br></pre></td></tr></table></figure>
+
+<h1 id="Step-03-csv2json-파일-구축"><a href="#Step-03-csv2json-파일-구축" class="headerlink" title="Step 03. csv2json 파일 구축"></a><strong>Step 03. csv2json 파일 구축</strong></h1><p>이번에는 CSV와 JSON 변환 파일을 구축하는 코드를 작성한다. (파일 경로 : dags&#x2F;<strong><a target="_blank" rel="noopener" href="http://csv2json.py/">csv2json.py</a></strong>)\</p>
+<p>주요 목적 함수 csvToJson()의 역할은 <code>data/data.csv</code> 파일을 불러와서 <code>fromAirflow.json</code> 파일로 변경하는 것이다.</p>
+<p>DAG는 csvToJson 함수를 하나의 작업으로 등록하는 과정을 담는다. 작업의 소유자, 시작일시, 실패 시 재시도 횟수, 재시도 지연시 시간을 지정한다.</p>
+<ul>
+<li>자세한 옵션은 도움말을 참조한다. <strong><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html">https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html</a></strong></li>
+</ul>
+<p><code>print_starting &gt;&gt; csvJson</code> 에서 <code>&gt;&gt;</code> 는 하류 설정 연산자라고 부른다. (동의어 비트 자리이동 연산자)</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import libaries</span></span><br><span class="line">import datetime as dt </span><br><span class="line">from datetime import timedelta </span><br><span class="line"></span><br><span class="line">from airflow import DAG</span><br><span class="line">from airflow.operators.bash import BashOperator</span><br><span class="line">from airflow.operators.python import PythonOperator</span><br><span class="line"></span><br><span class="line">import pandas as pd </span><br><span class="line"></span><br><span class="line"><span class="comment"># load data</span></span><br><span class="line">def csvToJson():</span><br><span class="line">    df = pd.read_csv(<span class="string">&#x27;data.csv&#x27;</span>)</span><br><span class="line">    <span class="comment"># print(df.info())</span></span><br><span class="line">    <span class="keyword">for</span> i, <span class="built_in">r</span> <span class="keyword">in</span> df.iterrows():</span><br><span class="line">        print(<span class="built_in">r</span>[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Export JSON</span></span><br><span class="line">    df.to_json(<span class="string">&#x27;fromAirflow.json&#x27;</span>, orient=<span class="string">&quot;records&quot;</span>)</span><br><span class="line"></span><br><span class="line">default_args = &#123;</span><br><span class="line">    <span class="string">&#x27;owner&#x27;</span> : <span class="string">&#x27;evan&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;start_date&#x27;</span> : dt.datetime(<span class="number">2020</span>, <span class="number">3</span>, <span class="number">18</span>), </span><br><span class="line">    <span class="string">&#x27;retries&#x27;</span> : <span class="number">1</span>, </span><br><span class="line">    <span class="string">&#x27;retry_delay&#x27;</span> : dt.timedelta(minutes=<span class="number">5</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 참조 : https://ponyozzang.tistory.com/402</span></span><br><span class="line">with DAG(<span class="string">&#x27;MyCSVDAG&#x27;</span>, </span><br><span class="line">            default_args=default_args, </span><br><span class="line">            schedule_interval=timedelta(minutes=<span class="number">5</span>), </span><br><span class="line">            <span class="comment"># &#x27;0 * * * *&#x27;</span></span><br><span class="line">        ) as dag:</span><br><span class="line">    print_starting = BashOperator(task_id = <span class="string">&quot;starting&quot;</span>, </span><br><span class="line">                                  bash_command=<span class="string">&#x27;echo &quot;I am reading the CSV now......&quot;&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    CSVJson = PythonOperator(task_id = <span class="string">&quot;convertCSVtoJson&quot;</span>, </span><br><span class="line">                             python_callable=csvToJson)</span><br><span class="line"></span><br><span class="line">print_starting &gt;&gt; CSVJson</span><br><span class="line"></span><br><span class="line"><span class="comment"># if __name__ == &quot;__main__&quot;:</span></span><br><span class="line"><span class="comment">#    csvToJson()</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Step-04-Airflow-Webserver-및-Scheduler-동시-실행"><a href="#Step-04-Airflow-Webserver-및-Scheduler-동시-실행" class="headerlink" title="Step 04. Airflow Webserver 및 Scheduler 동시 실행"></a><strong>Step 04. Airflow Webserver 및 Scheduler 동시 실행</strong></h1><p>이제 웹서버와 스케쥴러를 동시에 실행한다. (터미널을 2개 열어야 함에 주의한다.)</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> airflow webserver <span class="literal">-p</span> <span class="number">8080</span></span><br><span class="line"><span class="variable">$</span> airflow scheduler</span><br></pre></td></tr></table></figure>
+
+<p>이제 WebUI를 확인하면 정상적으로 작동하는 것을 확인할 수 있다.</p>
+<p><img src="/images/Airflow/Untitled.png" alt="Untitled"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Github/" rel="tag"># Github</a>
+              <a href="/tags/blog/" rel="tag"># blog</a>
+              <a href="/tags/%ED%97%A5%EC%86%8C/" rel="tag"># 헥소</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/02/Apache%20NiFi/" rel="prev" title="Apache NiFi 설치와 설정 in WSL2">
+      <i class="fa fa-chevron-left"></i> Apache NiFi 설치와 설정 in WSL2
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Step-01-Dags-%ED%8F%B4%EB%8D%94-%EC%83%9D%EC%84%B1"><span class="nav-number">1.</span> <span class="nav-text">Step 01. Dags 폴더 생성</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step-02-%EA%B0%80%EC%83%81%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%83%9D%EC%84%B1"><span class="nav-number">2.</span> <span class="nav-text">Step 02. 가상의 데이터 생성</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step-03-csv2json-%ED%8C%8C%EC%9D%BC-%EA%B5%AC%EC%B6%95"><span class="nav-number">3.</span> <span class="nav-text">Step 03. csv2json 파일 구축</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step-04-Airflow-Webserver-%EB%B0%8F-Scheduler-%EB%8F%99%EC%8B%9C-%EC%8B%A4%ED%96%89"><span class="nav-number">4.</span> <span class="nav-text">Step 04. Airflow Webserver 및 Scheduler 동시 실행</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">CHAEEUN</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHAEEUN</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

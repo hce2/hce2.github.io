@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hce2.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="step 01. 자바 설치자바를 설치한다.   설치파일 : Java SE 8 Archive Downloads (JDK 8u211 and later) 오라클 로그인이 필요 할 수도 있다.  다운로드 파일을 관리자로 실행한다. Next 버튼 클릭 후, 아래 파일에서 경로를 수정한다.  파일 경로에  Program Files 공백이 있는데, 이러한 공백은 환경">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark Installation on Windows">
+<meta property="og:url" content="https://hce2.github.io/2022/05/02/Spark/index.html">
+<meta property="og:site_name" content="CHAEEUN">
+<meta property="og:description" content="step 01. 자바 설치자바를 설치한다.   설치파일 : Java SE 8 Archive Downloads (JDK 8u211 and later) 오라클 로그인이 필요 할 수도 있다.  다운로드 파일을 관리자로 실행한다. Next 버튼 클릭 후, 아래 파일에서 경로를 수정한다.  파일 경로에  Program Files 공백이 있는데, 이러한 공백은 환경">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%201.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%202.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%203.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%204.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%205.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%206.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%207.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%208.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%209.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%2010.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%2011.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%2012.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%2013.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%2014.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%2015.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%2016.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%2017.png">
+<meta property="og:image" content="https://hce2.github.io/images/Spark/Untitled%2018.png">
+<meta property="article:published_time" content="2022-05-02T08:10:05.000Z">
+<meta property="article:modified_time" content="2022-05-03T02:37:06.301Z">
+<meta property="article:author" content="CHAEEUN">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="헥소">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hce2.github.io/images/Spark/Untitled.png">
+
+<link rel="canonical" href="https://hce2.github.io/2022/05/02/Spark/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Spark Installation on Windows | CHAEEUN</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHAEEUN</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/05/02/Spark/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CHAEEUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHAEEUN">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spark Installation on Windows
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-02 17:10:05" itemprop="dateCreated datePublished" datetime="2022-05-02T17:10:05+09:00">2022-05-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-03 11:37:06" itemprop="dateModified" datetime="2022-05-03T11:37:06+09:00">2022-05-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Setting/" itemprop="url" rel="index"><span itemprop="name">Setting</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="step-01-자바-설치"><a href="#step-01-자바-설치" class="headerlink" title="step 01. 자바 설치"></a>step 01. 자바 설치</h1><p>자바를 설치한다. </p>
+<ul>
+<li>설치파일 : <strong><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html">Java SE 8 Archive Downloads (JDK 8u211 and later)</a></strong></li>
+<li>오라클 로그인이 필요 할 수도 있다.</li>
+</ul>
+<p>다운로드 파일을 관리자로 실행한다. Next 버튼 클릭 후, 아래 파일에서 경로를 수정한다.</p>
+<ul>
+<li>파일 경로에  <code>Program Files</code> 공백이 있는데, 이러한 공백은 환경 설치 시 문제가 될 수 있다.</li>
+</ul>
+<p><img src="/images/Spark/Untitled.png" alt="Untitled"></p>
+<p>C드라이브에 <code>jdk</code> 파일을 생성하고 경로를 아래와 같이 변경한다.</p>
+<p><img src="/images/Spark/Untitled%201.png" alt="Untitled"></p>
+<p>C드라이브에 <code>jre</code> 파일을 생성하고 자바의 런타임 환경의 폴더도 변경해준다.</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/images/Spark/Untitled%202.png" alt="Untitled"></h2><h1 id="step-02-Spark-설치"><a href="#step-02-Spark-설치" class="headerlink" title="step 02. Spark 설치"></a>step 02. Spark 설치</h1><h2 id="1-설치파일-다운로드"><a href="#1-설치파일-다운로드" class="headerlink" title="(1) 설치파일 다운로드"></a>(1) <strong><strong>설치파일 다운로드</strong></strong></h2><p>Spark를 설치한다.</p>
+<ul>
+<li>설치 주소 : h**<a target="_blank" rel="noopener" href="https://www.apache.org/dyn/closer.lua/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz">ttps:&#x2F;&#x2F;www.apache.org/dyn/closer.lua/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz</a>** (2022년 1월 기준)</li>
+<li>아래의 ‘The object is in our archive’를 다운 받는다.</li>
+</ul>
+<p><img src="/images/Spark/Untitled%203.png" alt="Untitled"></p>
+<h2 id="2-WinRAR-프로그램-다운로드"><a href="#2-WinRAR-프로그램-다운로드" class="headerlink" title="(2) WinRAR 프로그램 다운로드"></a><strong><strong>(2) WinRAR 프로그램 다운로드</strong></strong></h2><p><code>.tgz</code> 압축파일을 풀기 위해서는 <code>WinRAR</code> 을 설치한다.</p>
+<ul>
+<li>설치 파일: <strong><a target="_blank" rel="noopener" href="https://www.rarlab.com/download.htm">https://www.rarlab.com/download.htm</a></strong></li>
+<li><code>WinRAR x64 (64 bit) 6.11</code> 을 다운 받는다.</li>
+</ul>
+<p><img src="/images/Spark/Untitled%204.png" alt="Untitled"></p>
+<h2 id="3-spark-폴더-생성-및-파일-이동"><a href="#3-spark-폴더-생성-및-파일-이동" class="headerlink" title="(3) spark 폴더 생성 및 파일 이동"></a><strong><strong>(3) spark 폴더 생성 및 파일 이동</strong></strong></h2><p>C드라이브에 spark 폴더를 생성 후, spark-3.2.0-bin-hadoop3.2 폴더 내 모든 파일을 복사한다.</p>
+<p><img src="/images/Spark/Untitled%205.png" alt="Untitled"></p>
+<h2 id="4-log4j-properties-파일-수정"><a href="#4-log4j-properties-파일-수정" class="headerlink" title="(4) log4j.properties 파일 수정"></a><strong><strong>(4) log4j.properties 파일 수정</strong></strong></h2><p>• <code>conf</code> - <code>[log4j.properties.template</code> 파일을 메모장으로 연다.</p>
+<p><img src="/images/Spark/Untitled%206.png" alt="Untitled"></p>
+<p>아래에서 <code>INFO</code> → <code>ERROR</code> 로 변경한다.</p>
+<ul>
+<li>작업 실행 시, 출력하는 모든 logs 값들을 없앨 수 있다.</li>
+</ul>
+<p><img src="/images/Spark/Untitled%207.png" alt="Untitled"></p>
+<h1 id="step-03-winutils-설치"><a href="#step-03-winutils-설치" class="headerlink" title="step 03. winutils 설치"></a>step 03. <strong><strong>winutils 설치</strong></strong></h1><p>이번에는 스파크가 윈도우 로컬 컴퓨터가 Hadoop으로 착각하게 만들 프로그램이 필요하다.</p>
+<ul>
+<li>설치파일: <strong><a target="_blank" rel="noopener" href="https://github.com/cdarlint/winutils">https://github.com/cdarlint/winutils</a></strong><ul>
+<li>버전에 맞는 파일에 들어가 winutils.exe 파일을 다운로드 받는다.</li>
+</ul>
+</li>
+<li>필자는 3.2.0 버전을 다운로드 받았다.</li>
+</ul>
+<p><img src="/images/Spark/Untitled%208.png" alt="Untitled"></p>
+<p>C드라이브에서 <code>winutils\bin</code> 폴더를 차례로 생성한 후, 다운로드 받은 파일을 저장한다.</p>
+<p><img src="/images/Spark/Untitled%209.png" alt="Untitled"></p>
+<p>이 파일이 Spark 실행 시, 오류 없이 실행될 수 있도록 파일 사용 권한을 얻도록 한다.</p>
+<ul>
+<li><p>C드라이브 하단에, <code>tmp\hive</code> 폴더를 차례대로 생성을 한다.</p>
+<p>  <img src="/images/Spark/Untitled%2010.png" alt="Untitled"></p>
+</li>
+<li><p>이 때에는 CMD 관리자 권한으로 파일을 열어서 실행한다.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\system32&gt;cd c:\winutils\<span class="built_in">bin</span></span><br><span class="line">c:\winutils\<span class="built_in">bin</span>&gt; winutils.exe chmod <span class="number">777</span> \tmp\hive</span><br></pre></td></tr></table></figure>
+
+<h1 id="step-04-환경변수-설정"><a href="#step-04-환경변수-설정" class="headerlink" title="step 04. 환경변수 설정"></a>step 04. <strong><strong>환경변수 설정</strong></strong></h1><p>시스템 환경변수를 설정한다.</p>
+<ul>
+<li>시스템 환경 변수 편집에 들어가 환경 변수는 클릭한다.</li>
+<li>각 사용자 계정에 <code>사용자 변수 - 새로 만들기 버튼</code>을 클릭한다.</li>
+</ul>
+<p><img src="/images/Spark/Untitled%2011.png" alt="Untitled"></p>
+<p>SPARK_HOME 환경변수를 설정한다.</p>
+<p><img src="/images/Spark/Untitled%2012.png" alt="Untitled"></p>
+<p>JAVA_HOME 환경변수를 설정한다.</p>
+<p><img src="/images/Spark/Untitled%2013.png" alt="Untitled"></p>
+<p>HADOOP_HOME 환경변수를 설정한다.</p>
+<p><img src="/images/Spark/Untitled%2014.png" alt="Untitled"></p>
+<p>PATH 변수를 편집한다. </p>
+<p><img src="/images/Spark/Untitled%2015.png" alt="Untitled"></p>
+<p>아래의 코드를 추가한다.</p>
+<ul>
+<li>%SPARK_HOME%\bin</li>
+<li>%JAVA_HOME%\bin</li>
+</ul>
+<p><img src="/images/Spark/Untitled%2016.png" alt="Untitled"></p>
+<h1 id="step-05-파이썬-환경설정"><a href="#step-05-파이썬-환경설정" class="headerlink" title="step 05. 파이썬 환경설정"></a>step 05. <strong><strong>파이썬 환경설정</strong></strong></h1><p>Python 환경설정을 추가한다.</p>
+<p><img src="/images/Spark/Untitled%2017.png" alt="Untitled"></p>
+<h1 id="step-06-Spark-Test"><a href="#step-06-Spark-Test" class="headerlink" title="step 06. Spark Test"></a>step 06. Spark Test</h1><p>CMD를 관리자로 열고 <code>c:\spark</code> 폴더로 경로를 설정 한다.</p>
+<ul>
+<li><code>pyspark</code> 를 입력한다.</li>
+</ul>
+<p><img src="/images/Spark/Untitled%2018.png" alt="Untitled"></p>
+<p>이번에는 해당 <code>[README.md](http://README.md)</code> 파일을 불러와서 아래 코드가 실행되는지 확인한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>rd = sc.textFile(<span class="string">&quot;README.md&quot;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>rd.count()</span><br><span class="line"><span class="number">109</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Github/" rel="tag"># Github</a>
+              <a href="/tags/blog/" rel="tag"># blog</a>
+              <a href="/tags/%ED%97%A5%EC%86%8C/" rel="tag"># 헥소</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/02/Apache-Airflow/" rel="prev" title="Setting up Apache-Airflow in Windows using WSL2">
+      <i class="fa fa-chevron-left"></i> Setting up Apache-Airflow in Windows using WSL2
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/02/ElasticSearchKibana/" rel="next" title="ElasticSearch & Kibana 설치 in WSL2">
+      ElasticSearch & Kibana 설치 in WSL2 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#step-01-%EC%9E%90%EB%B0%94-%EC%84%A4%EC%B9%98"><span class="nav-number">1.</span> <span class="nav-text">step 01. 자바 설치</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#step-02-Spark-%EC%84%A4%EC%B9%98"><span class="nav-number">2.</span> <span class="nav-text">step 02. Spark 설치</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%EC%84%A4%EC%B9%98%ED%8C%8C%EC%9D%BC-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C"><span class="nav-number">2.1.</span> <span class="nav-text">(1) 설치파일 다운로드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-WinRAR-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C"><span class="nav-number">2.2.</span> <span class="nav-text">(2) WinRAR 프로그램 다운로드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-spark-%ED%8F%B4%EB%8D%94-%EC%83%9D%EC%84%B1-%EB%B0%8F-%ED%8C%8C%EC%9D%BC-%EC%9D%B4%EB%8F%99"><span class="nav-number">2.3.</span> <span class="nav-text">(3) spark 폴더 생성 및 파일 이동</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-log4j-properties-%ED%8C%8C%EC%9D%BC-%EC%88%98%EC%A0%95"><span class="nav-number">2.4.</span> <span class="nav-text">(4) log4j.properties 파일 수정</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#step-03-winutils-%EC%84%A4%EC%B9%98"><span class="nav-number">3.</span> <span class="nav-text">step 03. winutils 설치</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#step-04-%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98-%EC%84%A4%EC%A0%95"><span class="nav-number">4.</span> <span class="nav-text">step 04. 환경변수 설정</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#step-05-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95"><span class="nav-number">5.</span> <span class="nav-text">step 05. 파이썬 환경설정</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#step-06-Spark-Test"><span class="nav-number">6.</span> <span class="nav-text">step 06. Spark Test</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">CHAEEUN</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHAEEUN</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
