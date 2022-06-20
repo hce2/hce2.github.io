@@ -155,6 +155,134 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/05/02/oracle6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CHAEEUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHAEEUN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/02/oracle6/" class="post-title-link" itemprop="url">6장. 테이블 사이를 연결해 주는 조인과 서브 쿼리 알아보기</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-02 17:10:05" itemprop="dateCreated datePublished" datetime="2022-05-02T17:10:05+09:00">2022-05-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-03 11:47:16" itemprop="dateModified" datetime="2022-05-03T11:47:16+09:00">2022-05-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ORACLE/" itemprop="url" rel="index"><span itemprop="name">ORACLE</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>동등 조인 : WHERE 절에서 ‘&#x3D;’ 연산자를 사용해 조인</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.employee_id</span><br><span class="line">, a.emp_name</span><br><span class="line">, a.department_id</span><br><span class="line">, b.department_name</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">employees a</span><br><span class="line">, departments b</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> 세미 조인</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 서브쿼리를 사용함</span></span><br><span class="line"><span class="comment">-- 서브 쿼리에 존재하는 데이터만 메인 쿼리에서 추출</span></span><br><span class="line"><span class="comment">-- IN &amp; EXISTS</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> <span class="keyword">EXISTS</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">department_id</span><br><span class="line">, department_name</span><br><span class="line"><span class="keyword">FROM</span> departments a</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees b</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id</span><br><span class="line"><span class="keyword">AND</span> b.salary <span class="operator">&gt;</span> <span class="number">3000</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> a.department_name;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> <span class="keyword">IN</span> 사용</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">department_id</span><br><span class="line">, department_name</span><br><span class="line"><span class="keyword">FROM</span> departments a</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="keyword">IN</span> (<span class="keyword">SELECT</span></span><br><span class="line">b.department_id</span><br><span class="line"><span class="keyword">FROM</span> employees b</span><br><span class="line"><span class="keyword">WHERE</span> b.salary <span class="operator">&gt;</span> <span class="number">3000</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> a.department_name;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> 안티 조인</span><br><span class="line"><span class="comment">-- 세미 조인 개념의 반대</span></span><br><span class="line"><span class="comment">-- 서브쿼리의 B 테이블에 없는 메인 쿼리</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.employee_id</span><br><span class="line">, a.emp_name</span><br><span class="line">, a.department_id</span><br><span class="line">, b.department_name</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">employees a</span><br><span class="line">, departments b</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id</span><br><span class="line"><span class="keyword">AND</span> a.department_id <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> department_id</span><br><span class="line"><span class="keyword">FROM</span> departments</span><br><span class="line"><span class="keyword">WHERE</span> manager_id <span class="keyword">IS</span> <span class="keyword">NULL</span>); <span class="comment">-- 결측치가 아닌 친구들을 조회한다.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> 셀프 조인</span><br><span class="line"><span class="comment">-- 동일한 한 테이블에서 조인하는 방법</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.employee_id</span><br><span class="line">, a.emp_name</span><br><span class="line">, b.employee_id</span><br><span class="line">, b.emp_name</span><br><span class="line">, a.department_id</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">employees a</span><br><span class="line">, employees b</span><br><span class="line"><span class="keyword">WHERE</span> a.employee_id <span class="operator">&lt;</span> b.employee_id</span><br><span class="line"><span class="keyword">AND</span> a.department_id <span class="operator">=</span> b.department_id</span><br><span class="line"><span class="keyword">AND</span> a.department_id <span class="operator">=</span> <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span></span><br><span class="line"><span class="comment">-- 조인 조건에 만족하지 않더라도 데이터를 모두 추출함</span></span><br><span class="line"><span class="comment">-- 무조건 ID가 매칭이 된 것만 조회</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.department_id</span><br><span class="line">, a.department_name</span><br><span class="line">, b.job_id</span><br><span class="line">, b.department_id</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">departments a</span><br><span class="line">, job_history b</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> 매칭이 안되는 칼럼은 <span class="keyword">null</span>로 출력</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.department_id</span><br><span class="line">, a.department_name</span><br><span class="line">, b.job_id</span><br><span class="line">, b.department_id</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">departments a</span><br><span class="line">, job_history b</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id(<span class="operator">+</span>); <span class="comment">-- (+) : 외부조인 = null값도 나옴</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.employee_id</span><br><span class="line">, a.emp_name</span><br><span class="line">, b.job_id</span><br><span class="line">, b.department_id</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">employees a</span><br><span class="line">, job_history b</span><br><span class="line"><span class="keyword">WHERE</span> a.employee_id <span class="operator">=</span> b.employee_id(<span class="operator">+</span>)</span><br><span class="line"><span class="keyword">AND</span> a.department_id <span class="operator">=</span> b.department_id(<span class="operator">+</span>); <span class="comment">-- null 값이 나오려면 여기서 외부조인이 있어야함</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> 카타시안 조인</span><br><span class="line"><span class="comment">-- 사원 테이블의 총 건수는 107건</span></span><br><span class="line"><span class="comment">-- 부서 테이블의 총 건수는 27건</span></span><br><span class="line"><span class="comment">-- 107 x 27 = 2,889건</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> ANSI 조인</span><br><span class="line"><span class="comment">-- ANSI SQL 문법 (JOIN 명 들어감)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> <span class="number">2013</span>년 <span class="number">1</span>월 <span class="number">1</span>일 이후에 입사한 사원번호, 사원명, 부서번호, 부서명을 조회하는 쿼리 비교</span><br><span class="line"><span class="comment">-- 기존 문법</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.employee_id</span><br><span class="line">, a.emp_name</span><br><span class="line">, a.hire_date</span><br><span class="line">, b.department_id</span><br><span class="line">, b.department_name</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">employees a</span><br><span class="line">, departments b</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id</span><br><span class="line"><span class="keyword">AND</span> a.hire_date <span class="operator">&gt;=</span> TO_DATE(<span class="string">&#x27;2003-01-01&#x27;</span>, <span class="string">&#x27;YYYY-MM-DD&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> ANSI</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.employee_id</span><br><span class="line">, a.emp_name</span><br><span class="line">, a.hire_date</span><br><span class="line">, b.department_id</span><br><span class="line">, b.department_name</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">employees a</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> departments b</span><br><span class="line"><span class="keyword">ON</span> (a.department_id <span class="operator">=</span> b.department_id)</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id</span><br><span class="line"><span class="keyword">AND</span> a.hire_date <span class="operator">&gt;=</span> TO_DATE(<span class="string">&#x27;2003-01-01&#x27;</span>, <span class="string">&#x27;YYYY-MM-DD&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> 서브쿼리</span><br><span class="line"><span class="comment">-- SQL 문장 안에서 보조로 사용되는 또 다른 SELECT 문을 의미</span></span><br><span class="line"><span class="comment">-- 구조 : (1) 메인 쿼리 / (2) 서브 쿼리</span></span><br><span class="line"><span class="keyword">SELECT</span> (서브쿼리 들어갈 수 O</span><br><span class="line"><span class="keyword">SELECT</span> (서브쿼리) <span class="keyword">FROM</span> <span class="keyword">WHERE</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">HAVING</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span>)</span><br><span class="line"><span class="keyword">FROM</span> (서브쿼리 들어갈 수 O</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">FROM</span> <span class="keyword">WHERE</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">HAVING</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span>)</span><br><span class="line"><span class="keyword">WHERE</span> (서브쿼리 들어갈 수 O</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">FROM</span> <span class="keyword">WHERE</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">HAVING</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span>)</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> 연관성이 없는 서브 쿼리</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees; <span class="comment">-- 107개의 행</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> 메인 쿼리 : 모든 사원 테이블을 조회</span><br><span class="line"><span class="comment">-- 서브 쿼리 : 조건 - 사원테이블의 평균 급여보다 많은 사원</span></span><br><span class="line"><span class="comment">-- 결괏값은 51개</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(salary) <span class="keyword">FROM</span> employees;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="operator">&gt;=</span> (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(salary) <span class="keyword">FROM</span> employees);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> parent_id가 <span class="keyword">NULL</span>인 부서번호를 가진 총 사원의 건수</span><br><span class="line"><span class="keyword">SELECT</span> department_id</span><br><span class="line"><span class="keyword">FROM</span> departments</span><br><span class="line"><span class="keyword">WHERE</span> parent_id <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">count</span>(<span class="operator">*</span>)</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> department_id <span class="keyword">IN</span> (<span class="keyword">SELECT</span> department_id</span><br><span class="line"><span class="keyword">FROM</span> departments</span><br><span class="line"><span class="keyword">WHERE</span> parent_id <span class="keyword">IS</span> <span class="keyword">NULL</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> employee_id , job_id <span class="keyword">FROM</span> job_history;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">employee_id</span><br><span class="line">, emp_name</span><br><span class="line">, job_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> (employee_id, job_id) <span class="keyword">IN</span> (<span class="keyword">SELECT</span></span><br><span class="line">employee_id</span><br><span class="line">, job_id</span><br><span class="line"><span class="keyword">FROM</span> job_history);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> 연관성 있는 서브 쿼리</span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">dapartment a</span><br><span class="line">, job_history b</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.department_id</span><br><span class="line">, a.department_name</span><br><span class="line"><span class="keyword">FROM</span> departments a</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">FROM</span> job_history b</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> <span class="keyword">SELECT</span> 절에 서브쿼리가 존재하는 케이스</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.employee_id</span><br><span class="line">, (<span class="keyword">SELECT</span> b.emp_name</span><br><span class="line"><span class="keyword">FROM</span> employees b</span><br><span class="line"><span class="keyword">WHERE</span> a.employee_id <span class="operator">=</span> b.employee_id) <span class="keyword">AS</span> emp_name</span><br><span class="line">, a.department_id</span><br><span class="line">, (<span class="keyword">SELECT</span> b.department_name</span><br><span class="line"><span class="keyword">FROM</span> departments b</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id) <span class="keyword">AS</span> dep_name</span><br><span class="line">, (<span class="keyword">SELECT</span> c.job_title</span><br><span class="line"><span class="keyword">FROM</span> jobs c</span><br><span class="line"><span class="keyword">WHERE</span> a.job_id <span class="operator">=</span> c.job_id) <span class="keyword">AS</span> title_name</span><br><span class="line"><span class="keyword">FROM</span> job_history a;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span> 중첩 서브쿼리</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">a.department_id</span><br><span class="line">, a.department_name</span><br><span class="line"><span class="keyword">FROM</span> departments a</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">FROM</span> employees b</span><br><span class="line"><span class="keyword">WHERE</span> a.department_id <span class="operator">=</span> b.department_id</span><br><span class="line"><span class="keyword">AND</span> b.salary <span class="operator">&gt;</span> (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(salary) <span class="keyword">FROM</span> employees)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/05/02/oracle8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -612,20 +740,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
