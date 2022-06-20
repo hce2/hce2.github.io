@@ -20,17 +20,24 @@
     var CONFIG = {"hostname":"hce2.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://hce2.github.io/categories/index.html">
+  <meta name="description" content="&lt;학습목표&gt;객체는 call by reference이기 때문에 객체를 출력하면 객체의 값이 아니라 주소가 출력된다. 객체를 출력했을때 자동으로 호출되는 함수가 toString이고 사용자 정의하지 않았다면 기복적으로 주소가 출력된다. toString을 통해 값을 출력하도록 만들 수 있다. 이클립스에서 우클릭 source - generate toStr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="0616 자바 공부">
+<meta property="og:url" content="https://hce2.github.io/2022/06/16/0616/index.html">
 <meta property="og:site_name" content="CHAEEUN">
+<meta property="og:description" content="&lt;학습목표&gt;객체는 call by reference이기 때문에 객체를 출력하면 객체의 값이 아니라 주소가 출력된다. 객체를 출력했을때 자동으로 호출되는 함수가 toString이고 사용자 정의하지 않았다면 기복적으로 주소가 출력된다. toString을 통해 값을 출력하도록 만들 수 있다. 이클립스에서 우클릭 source - generate toStr">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-02T07:56:21.000Z">
-<meta property="article:modified_time" content="2022-05-02T08:05:34.529Z">
+<meta property="article:published_time" content="2022-06-16T07:30:05.000Z">
+<meta property="article:modified_time" content="2022-06-20T08:15:32.265Z">
 <meta property="article:author" content="CHAEEUN">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="헥소">
+<meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hce2.github.io/categories/">
+<link rel="canonical" href="https://hce2.github.io/2022/06/16/0616/">
 
 
 <script id="page-configurations">
@@ -38,13 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>categories | CHAEEUN
-</title>
+  <title>0616 자바 공부 | CHAEEUN</title>
   
 
 
@@ -151,51 +157,145 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="en">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/06/16/0616/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CHAEEUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHAEEUN">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          0616 자바 공부
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">categories
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
 
-<div class="post-meta">
+              <time title="Created: 2022-06-16 16:30:05" itemprop="dateCreated datePublished" datetime="2022-06-16T16:30:05+09:00">2022-06-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-20 17:15:32" itemprop="dateModified" datetime="2022-06-20T17:15:32+09:00">2022-06-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="lt-학습목표-gt"><a href="#lt-학습목표-gt" class="headerlink" title="&lt;학습목표&gt;"></a>&lt;학습목표&gt;</h1><p>객체는 call by reference이기 때문에 객체를 출력하면 객체의 값이 아니라 주소가 출력된다.</p>
+<p>객체를 출력했을때 자동으로 호출되는 함수가 toString이고 사용자 정의하지 않았다면 기복적으로 주소가 출력된다. toString을 통해 값을 출력하도록 만들 수 있다.</p>
+<p>이클립스에서 우클릭 source - generate toString 들어가서 변수들 체크해주면 값들 찍히게 됨</p>
+<ul>
+<li>f3 : 정의부로 이동</li>
+</ul>
+<p>이클립스 단축키 </p>
+<ul>
+<li>ctrl + space : 자동완성</li>
+<li>ctrl + shift + r : 파일명으로 바로 찾기</li>
+<li>ctrl + d : 한줄 지우기</li>
+<li>ctrl + shift + 키보드 아래 : 해당블록 복붙</li>
+<li>f3 : 정의부로 이동</li>
+<li>alt + shift + s : Source</li>
+<li>ctrl + shift + o : 자동 import</li>
+<li>ctrl + shift + f : 자동 들여쓰기</li>
+<li>ctrl + shift + p : 짝 괄호로 이동</li>
+</ul>
+<p>메소드 복습</p>
+<ul>
+<li><p>파라미터 : parameter → 매개변수 ⇒ 정의할때 쓴 변수</p>
+</li>
+<li><p>아규먼트 : argument → 전달인자 ⇒ 호출할때 쓴 값</p>
+<p>  String 초록a &#x3D; “빨강a”; &#x2F;&#x2F; “a”와 같은 a는 아무도 없다</p>
+<p>  public 파랑a(String 노랑a) {</p>
+<p>  return 노랑a;</p>
+<p>  }</p>
+<p>  파랑a(초록a);</p>
+<p>  노랑 &#x3D; 파라미터</p>
+<p>  초록 &#x3D; 아규먼트</p>
+</li>
+</ul>
+<p>** 책 활용법 **</p>
+<ol>
+<li>목차를 보고 내가 공부하고자 하는게 무엇인지 구체화.<ol>
+<li><p>책 : 심혈을 기울여서 공부순서 (교육과정)을 짜놓은 것</p>
+<pre><code>    초보면 책이 좋다. 수동적이면 책이 좋다.
+</code></pre>
+</li>
+<li><p>인터넷</p>
+</li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Github/" rel="tag"># Github</a>
+              <a href="/tags/blog/" rel="tag"># blog</a>
+              <a href="/tags/%ED%97%A5%EC%86%8C/" rel="tag"># 헥소</a>
+              <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/15/0616review/" rel="prev" title="0616 자바 복습">
+      <i class="fa fa-chevron-left"></i> 0616 자바 복습
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              4 categories in total
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA-review/">JAVA review</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ORACLE/">ORACLE</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setting/">Setting</a><span class="category-list-count">6</span></li></ul>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -246,6 +346,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-%ED%95%99%EC%8A%B5%EB%AA%A9%ED%91%9C-gt"><span class="nav-number">1.</span> <span class="nav-text">&lt;학습목표&gt;</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
