@@ -155,6 +155,162 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/06/22/0622review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CHAEEUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHAEEUN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/22/0622review/" class="post-title-link" itemprop="url">0622 자바 복습</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-22 09:12:05" itemprop="dateCreated datePublished" datetime="2022-06-22T09:12:05+09:00">2022-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-24 09:23:26" itemprop="dateModified" datetime="2022-06-24T09:23:26+09:00">2022-06-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA-review/" itemprop="url" rel="index"><span itemprop="name">JAVA review</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="복습"><a href="#복습" class="headerlink" title="복습"></a>복습</h1><p>Collection Framework :</p>
+<p>자바에서 미리 만들어놓은 자료구조</p>
+<ul>
+<li>직접 만드는 것보다 일관성 있고, 빠르고, 안정적이고 품질이 높다.</li>
+<li>만드는 법 : 객체 만드는 법과 비슷한데 제네릭이 들어감.<ul>
+<li>객체 만드는 법 : 객체타입 이름 &#x3D; new 객체타입(파라미터);</li>
+<li>컬렉션타입&lt;데이터타입&gt; 이름 &#x3D; new 컬렉션타입&lt;데이터타입&gt;(파라미터);</li>
+</ul>
+</li>
+<li>데이터타입은 원시형 데이터타입이 들어갈 수 없다. 참조형 데이터타입만 들어갈 수 있다.</li>
+</ul>
+<ol>
+<li>Set : 집합</li>
+<li>List : 크기가 고정되지 않은 배열</li>
+<li>Queue : 먼저 들어온 놈이 먼저 나감</li>
+<li>Map : 키와 벨류의 쌍</li>
+</ol>
+<p>각각의 자료구조에 미리 만들어져있는 함수를 활용해서 CRUD를 한다.</p>
+<p>CRUD &#x3D; Create, Read, Update, Delete 만들고 읽고 수정하고 지우고</p>
+<p>함수에는 get, add, remove, size, indexOf 이런 것들이 있다.</p>
+<p>Iterator : 반복자.</p>
+<p>향상된 for문에서 뒤에 들어갈 수 있는 데이터타입이 이터레이터이다.</p>
+<p>for(자료형 이름 : 이터레이터) { </p>
+<p>모든 원소에 대해 실행할 본문;</p>
+<p>}</p>
+<p>while(iterator.haxNext()) {</p>
+<p>이터레이터명.next();   &#x2F;&#x2F; 다음 원소 읽어오기</p>
+<p>}</p>
+<p>제네릭 : Generic.</p>
+<ul>
+<li>함수 정의 시 파라미터의 이름이 무엇으로 넘어오든 상관없이 정의할 때 정한 이름으로 쓰듯이 데이터타입을 정의 시에는 대명사처럼 받고, 인스턴스 생성 시 결정되도록 하는 문법</li>
+<li>즉, 어떤 데이터타입으로 넘어오든지 그 넘어온 데이터타입으로 쓰겠다. 라고 하는 것</li>
+<li>데이터타입이 다를 때마다 오버로딩 해줘야 되는 작업을 없애준다.<ul>
+<li>예) List<String> list &#x3D; new ArraryList<String>();</li>
+<li>List를 만든 사람은 List를 정의할 때 제네릭을 사용했다.</li>
+<li>그래서 List의 인스턴스를 만드는 사람은 <String>을 하면 String형태의 리스트가 만들어</li>
+<li><Integer>를 하면 Integer 형태의 리스트가 만들어지고</li>
+<li><Double>을 하면 Double형태의 리스트가 만들어진다.</li>
+<li>하지만 List정의 시의 코드는 하나다. 하나가 저것들을 다 처리할 수 있다. 제네릭을 썼기 때문</li>
+</ul>
+</li>
+</ul>
+<p>ERD : Entity Relationship Diagram. 객체관계도</p>
+<p>RDB(관계형 데이터 베이스) 오라클, mysql은 설계에 따라서 성능차이가 엄청남</p>
+<p>&lt;제약조건&gt;</p>
+<ul>
+<li><p>PK : primary Key. 기본키.</p>
+<ul>
+<li>한테이블에서 유일한 행을 결정짓도록 하는 컬럼들의 조합</li>
+<li>한테이블에 pk는 무조건 하나만 있어야한다. 0개, n개 안된다.</li>
+<li>그 말이 한테이블에 pk는 하나만의 컬럼으로만 구성되어야 한다는 말이 아닌데 그렇게 이해하기 쉬우니 유의해야 한다.</li>
+</ul>
+</li>
+<li><p>NN : Not Null. 빈값이 있으면 안된다.</p>
+</li>
+<li><p>Unique : 이미 테이블에 기존값이 있으면 중복되어서 들어갈 수 없다. 유일해야 한다.</p>
+</li>
+<li><p>FK : Foreign Key. 외래키.</p>
+<ul>
+<li>다른 테이블의 데이터를 참조해서 사용할 때 다른 테이블의 하나의 행을 유일하게 식벽해서 가져와야하기 때문에 다른 테이블의 PK를 참조하게 되는데 그것이 내 테이블에서는 FK라고 불린다.</li>
+</ul>
+</li>
+<li><p>CHECK : 조건에 부합하는 데이터만 들어올 수 있다.</p>
+</li>
+<li><p>FK를 가지고 올때 2가지 타입이 있다. 식별관계랑 비식별관계.</p>
+<ul>
+<li>식별관계 : 참조테이블의 PK가 내 테이블의 PK로 들어오는 경우.<ul>
+<li>ERD에서 실선으로 표현</li>
+<li>내 테이블에 데이터가 있을때 부모테이블에 그 데이터가 있음을 보장한다.</li>
+<li>부모테이블에서 다른 테이블에서 참조되고있는데이터를 지우려고 하면 못 지우거나, 참조데이터까지 지워야되기 때문에</li>
+</ul>
+</li>
+<li>비식별관계 : 참조테이블의 PK가 내테이블의 일반칼럼으로 들어오는 경우<ul>
+<li>ERD에서 점선으로 표현</li>
+<li>다른테이블에서 참조하고있더라도 부모테이블에서 참조되고있는 데이터를 지울 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Cardinaliry(관계 차수) : </p>
+<p>Optional : 있을 수도 있고, 없을 수도 있다.</p>
+<p>1 : 0, 1, n 관계를 ‘목적어’ 쪽에 표현해준다.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/06/21/0621/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1317,113 +1473,6 @@ float, double
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/05/02/VSCode/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="CHAEEUN">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHAEEUN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/02/VSCode/" class="post-title-link" itemprop="url">VSCode Remote WLS 연동</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-02 17:10:05" itemprop="dateCreated datePublished" datetime="2022-05-02T17:10:05+09:00">2022-05-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-03 11:32:54" itemprop="dateModified" datetime="2022-05-03T11:32:54+09:00">2022-05-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Setting/" itemprop="url" rel="index"><span itemprop="name">Setting</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="step01-VSCode-설치"><a href="#step01-VSCode-설치" class="headerlink" title="step01. VSCode 설치"></a>step01. VSCode 설치</h1><p>VSCode를 설치한다.****</p>
-<ul>
-<li>설치 주소 : <strong><a target="_blank" rel="noopener" href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a></strong></li>
-<li>관리자로 실행할 것이기 때문에 <strong>System Installer</strong>로 ****다운로드 받는다.</li>
-</ul>
-<p><img src="/images/VSCode/Untitled.png" alt="Untitled"></p>
-<p>설치 시, 환경변수 체크란만 잘 확인한다.</p>
-<p><img src="/images/VSCode/Untitled%201.png" alt="Untitled"></p>
-<p>설치 후 재부팅을 한다.</p>
-<h1 id="step-02-Remote-WSL-연동"><a href="#step-02-Remote-WSL-연동" class="headerlink" title="step 02. Remote WSL 연동"></a>step 02. <strong><strong>Remote WSL 연동</strong></strong></h1><p>VSCode를 실행한 후, 우측에 Extension 버튼을 클릭한다.</p>
-<p><img src="/images/VSCode/Untitled%202.png" alt="Untitled"></p>
-<p>검색창에서 Remote WSL을 검색 후, 설치를 진행한다.</p>
-<p><img src="/images/VSCode/Untitled%203.png" alt="Untitled"></p>
-<p>모두 클릭 후, Mark Done을 선택한다</p>
-<p><img src="/images/VSCode/Untitled%204.png" alt="Untitled"></p>
-<p>Open Folder를 클릭한다.</p>
-<p><img src="/images/VSCode/Untitled%205.png" alt="Untitled"></p>
-<p>WSL에서 설치했던 airflow 폴더를 선택하여 해당 프로젝트를 연다.</p>
-<ul>
-<li>체크란에 체크를 하고 Yes를 누른다.</li>
-</ul>
-<p><img src="/images/VSCode/Untitled%206.png" alt="Untitled"></p>
-<p>메뉴바에 Terminal을 선택 후, 화면 하단에서 WSL이 있는지 확인한다.</p>
-<p><img src="/images/VSCode/Untitled%207.png" alt="Untitled"></p>
-<p>WSL을 클릭하면 아래와 같이 터미널이 변경된 것을 확인할 수 있다.</p>
-<p><img src="/images/VSCode/Untitled%208.png" alt="Untitled"></p>
-<p>이제 간단한 Python 파일을 실행해본다.</p>
-<ul>
-<li>main.py</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/mnt/c/Programmings/airflow-test/venv/bin/python3</span></span><br><span class="line"><span class="comment">#-*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    print(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line">    print(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<p>이제 실행하면 정상적으로 출력이 되는 것을 확인할 수 있다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">username@username:/mnt/c/Programmings/airflow<span class="literal">-test</span><span class="variable">$</span> source venv/bin/activate</span><br><span class="line">(venv) username@username:/mnt/c/Programmings/airflow<span class="literal">-test</span><span class="variable">$</span> python3 main.py </span><br><span class="line">Hello, World!</span><br><span class="line">Hello, World!</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1493,7 +1542,7 @@ float, double
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
