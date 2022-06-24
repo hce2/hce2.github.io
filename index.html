@@ -155,6 +155,116 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/06/21/0621/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CHAEEUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHAEEUN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/21/0621/" class="post-title-link" itemprop="url">0620 자바 공부</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-21 16:37:05" itemprop="dateCreated datePublished" datetime="2022-06-21T16:37:05+09:00">2022-06-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-24 09:07:11" itemprop="dateModified" datetime="2022-06-24T09:07:11+09:00">2022-06-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="학업"><a href="#학업" class="headerlink" title="학업"></a>학업</h1><p>재귀함수 :</p>
+<p>자신을 정의할때 자신을 리턴하는 함수. 다시(재) 귀환(귀)하는 함수.</p>
+<hr>
+<p>개념을 자신감 있게 말할 수 있도록!!!</p>
+<p>***** 면접 단골 질문 *****</p>
+<p>데이터타입(원시형, 참초형)</p>
+<p>객체, 클래스, 인스턴스</p>
+<p>생성자</p>
+<p>추상클래스, 인터페이스</p>
+<p>오버라이드, 오버로드</p>
+<p>배열, 리스트</p>
+<hr>
+<hr>
+<p>** 설계를 위한 정보 뽑기**</p>
+<p>“판매실적” 테이블을 만들어야한다. 기본키는 뭘로되어야할까?</p>
+<p>→ 설계자 : 현재로서는 답을 할 수 없습니다. 정확히 어떤 판매실적을 저장하길 원합니까?</p>
+<p>→ 클라이언트 : 누가 언제 어디에 무슨제품을 몇개나 팔았는지 알고싶습니다.</p>
+<p>→ 설계자 : 그거면 진짜로 됩니까? 또 필요한 정보가 뭐가 있습니까?</p>
+<p>→ 클라이언트 : 음..</p>
+<p>→ 설계자 : 언제는 얼만큼 구체적이여야 합니까? 일단위입니까? 분단위입니까? 밀리세컨드? 금액은 필요가 없습니까? 새로운 데이터라는 것을 어떻게 판단할 수 있습니까?</p>
+<p>→ 클라이언트 : 초단위면 될 것 같습니다. 금액은 제품이 무엇인지 알면 자동으로 아는거 아닌가요?  거기에 몇개를 팔았냐가 기록되니까 전체금액을 산정할 수 있을 것 같습니다. 위에서 말한대로 ‘누가’, ‘언제’, ‘어디에’, ‘무엇을’ 이 겹친다면 중복으로 치고 새 데이터로 취급하면 안됩니다.</p>
+<p>→ 설계자 : 모든 컬럼을 뽑아내보겠습니다.</p>
+<p>판매사원, 판매시점, 판매처, 판매상품, 판매갯수, 판매처직원, 정기판매유무</p>
+<p>이 정보말고 추가로 필요한 정보가 있을까요?</p>
+<p>→ 클라이언트 : 없습니다.</p>
+<p>pk는 뭘로되어야 할까? 한 테이블의 유일함을 결정짓는 속성</p>
+<p>판매실적의 유일함을 결정짓는 속성이 뭔가?</p>
+<p>판매시점, 판매상품 → </p>
+<p>배성원 2022년 6월 20일 삼성증권수원점 keykron4 200 홍길동 무</p>
+<p>(<strong>중요</strong>) 목적어 쪽에 부호가 붙는다.</p>
+<p><img src="/images/0621/Untitled.png" alt="Untitled"></p>
+<p>실선일때 :</p>
+<p>삼발이 쪽이 자식</p>
+<p>부모의 글을 지우면 자식 댓글이 다 지워진다.</p>
+<p>댓글이 있다면 글은 반드시 있다.</p>
+<p>점선일때 :</p>
+<p>글을 지워도 댓글은 남아 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/06/20/0620review/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1314,146 +1424,6 @@ float, double
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/05/02/ElasticSearchKibana/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="CHAEEUN">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHAEEUN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/02/ElasticSearchKibana/" class="post-title-link" itemprop="url">ElasticSearch & Kibana 설치 in WSL2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-02 17:10:05" itemprop="dateCreated datePublished" datetime="2022-05-02T17:10:05+09:00">2022-05-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-03 11:34:39" itemprop="dateModified" datetime="2022-05-03T11:34:39+09:00">2022-05-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Setting/" itemprop="url" rel="index"><span itemprop="name">Setting</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Step-1-사전-필수-패키지-설치"><a href="#Step-1-사전-필수-패키지-설치" class="headerlink" title="Step 1. 사전 필수 패키지 설치"></a><strong>Step 1. 사전 필수 패키지 설치</strong></h1><p>우선 시스템 패키지를 업데이트 하고, HTTPS와 관련된 패키지를 설치한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo apt update</span><br><span class="line"><span class="variable">$</span> sudo apt install apt<span class="literal">-transport-https</span></span><br></pre></td></tr></table></figure>
-
-<p>자바를 설치한다.</p>
-<ul>
-<li>이미 설치가 되어 있다면 버전만 확인한다.</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo apt install openjdk<span class="literal">-11-jdk</span></span><br></pre></td></tr></table></figure>
-
-<p>설치한 버전을 확인한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> java <span class="literal">-version</span></span><br><span class="line">openjdk version <span class="string">&quot;11.0.14.1&quot;</span> <span class="number">2022</span><span class="literal">-02-08</span></span><br><span class="line">OpenJDK Runtime Environment (build <span class="number">11.0</span>.<span class="number">14.1</span>+<span class="number">1</span><span class="literal">-Ubuntu-0ubuntu1</span>.<span class="number">20.04</span>)</span><br><span class="line">OpenJDK <span class="number">64</span><span class="literal">-Bit</span> Server VM (build <span class="number">11.0</span>.<span class="number">14.1</span>+<span class="number">1</span><span class="literal">-Ubuntu-0ubuntu1</span>.<span class="number">20.04</span>, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
-
-<p>자바 환경 변수를 설정하기 위해 아래와 같이 에디터를 입력한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo vi /etc/environment</span><br></pre></td></tr></table></figure>
-
-<p>그리고 아래와 같이 추가한다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=&quot;/usr/lib/jvm/java-11-openjdk-amd64&quot;</span><br></pre></td></tr></table></figure>
-
-<p>환경변수를 업데이트 한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> source /etc/environment</span><br></pre></td></tr></table></figure>
-
-<p>실제 경로가 나오는지 확인한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br><span class="line">/usr/lib/jvm/java<span class="literal">-11-openjdk-amd64</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Step-2-ElasticSearch-설치"><a href="#Step-2-ElasticSearch-설치" class="headerlink" title="Step 2. ElasticSearch 설치"></a><strong>Step 2. ElasticSearch 설치</strong></h1><p>GPG Keys를 확인하여 설치를 진행한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">wget</span> <span class="literal">-qO</span> - https://artifacts.elastic.co/GPG<span class="literal">-KEY-elasticsearch</span> | sudo apt<span class="literal">-key</span> add -</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
-
-<p>라이브러리를 아래와 같이 추가한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo sh <span class="literal">-c</span> <span class="string">&#x27;echo &quot;deb https://artifacts.elastic.co/packages/7.x/apt stable main&quot; &gt; /etc/apt/sources.list.d/elastic-7.x.list&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>이제 elasticsearch를 설치한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo apt<span class="literal">-get</span> update</span><br><span class="line">Hit:<span class="number">1</span> https://artifacts.elastic.co/packages/<span class="number">7</span>.x/apt stable InRelease</span><br><span class="line">Hit:<span class="number">2</span> http://security.ubuntu.com/ubuntu focal<span class="literal">-security</span> InRelease</span><br><span class="line">Hit:<span class="number">3</span> http://archive.ubuntu.com/ubuntu focal InRelease</span><br><span class="line">Hit:<span class="number">4</span> http://archive.ubuntu.com/ubuntu focal<span class="literal">-updates</span> InRelease</span><br><span class="line">Hit:<span class="number">5</span> http://archive.ubuntu.com/ubuntu focal<span class="literal">-backports</span> InRelease</span><br><span class="line">Reading package lists... Done</span><br><span class="line"></span><br><span class="line"><span class="variable">$</span> sudo apt<span class="literal">-get</span> install elasticsearch</span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree</span><br><span class="line">Reading state information... Done</span><br><span class="line">The following NEW packages will be installed:</span><br><span class="line">  elasticsearch</span><br><span class="line"><span class="number">0</span> upgraded, <span class="number">1</span> newly installed, <span class="number">0</span> to remove and <span class="number">0</span> not upgraded.</span><br><span class="line">Need to get <span class="number">312</span> MB of archives.</span><br><span class="line">After this operation, <span class="number">517</span> MB of additional disk space will be used.</span><br><span class="line">Get:<span class="number">1</span> https://artifacts.elastic.co/packages/<span class="number">7</span>.x/apt stable/main amd64 elasticsearch amd64 <span class="number">7.17</span>.<span class="number">2</span> [<span class="number">312</span> <span class="type">MB</span>]</span><br><span class="line">Fetched <span class="number">312</span> MB <span class="keyword">in</span> <span class="number">8</span>s (<span class="number">40.9</span> MB/s)</span><br><span class="line">Selecting previously unselected package elasticsearch.</span><br><span class="line">(Reading database ... <span class="number">32942</span> files and directories currently installed.)</span><br><span class="line">Preparing to unpack .../elasticsearch_7.<span class="number">17.2</span>_amd64.deb ...</span><br><span class="line">Creating elasticsearch <span class="built_in">group</span>... OK</span><br><span class="line">Creating elasticsearch user... OK</span><br><span class="line">Unpacking elasticsearch (<span class="number">7.17</span>.<span class="number">2</span>) ...</span><br><span class="line">Setting up elasticsearch (<span class="number">7.17</span>.<span class="number">2</span>) ...</span><br><span class="line"><span class="comment">### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd</span></span><br><span class="line"> sudo systemctl daemon<span class="literal">-reload</span></span><br><span class="line"> sudo systemctl enable elasticsearch.service</span><br><span class="line"><span class="comment">### You can start elasticsearch service by executing</span></span><br><span class="line"> sudo systemctl <span class="built_in">start</span> elasticsearch.service</span><br><span class="line">warning: usage of JAVA_HOME is deprecated, use ES_JAVA_HOME</span><br><span class="line">Created elasticsearch keystore <span class="keyword">in</span> /etc/elasticsearch/elasticsearch.keystore</span><br><span class="line">Processing triggers <span class="keyword">for</span> systemd (<span class="number">245.4</span><span class="literal">-4ubuntu3</span>.<span class="number">15</span>) ...</span><br></pre></td></tr></table></figure>
-
-<h1 id="Step-3-Elasticsearch-서비스-시작"><a href="#Step-3-Elasticsearch-서비스-시작" class="headerlink" title="Step 3. Elasticsearch 서비스 시작"></a><strong>Step 3. Elasticsearch 서비스 시작</strong></h1><p>이번에는 elasticsearch 서비스를 시작한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo systemctl <span class="built_in">start</span> elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p>만약 아래와 같은 에러 메시지가 뜬다면, 추가해야 한다.</p>
-<ul>
-<li>참조 : <strong><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1379425/system-has-not-been-booted-with-systemd-as-init-system-pid-1-cant-operate">https://askubuntu.com/questions/1379425/system-has-not-been-booted-with-systemd-as-init-system-pid-1-cant-operate</a></strong></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System has not been booted with systemd as init system (PID 1).</span><br><span class="line">Can&#x27;t operate. Failed to connect to bus: Host is down</span><br></pre></td></tr></table></figure>
-
-<p>다음 명령어를 추가한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo <span class="literal">-b</span> unshare <span class="literal">--pid</span> <span class="literal">--fork</span> <span class="literal">--mount-proc</span> /lib/systemd/systemd <span class="literal">--system-unit</span>=basic.target</span><br><span class="line"><span class="variable">$</span> sudo <span class="literal">-E</span> nsenter <span class="literal">--all</span> <span class="literal">-t</span> <span class="variable">$</span>(pgrep <span class="literal">-xo</span> systemd) runuser <span class="literal">-P</span> <span class="literal">-l</span> <span class="variable">$USER</span> <span class="literal">-c</span> <span class="string">&quot;exec <span class="variable">$SHELL</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>서비스가 가능하도록 한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo systemctl enable elasticsearch</span><br><span class="line">Synchronizing state of elasticsearch.service with SysV service script with /lib/systemd/systemd<span class="literal">-sysv-install</span>.</span><br><span class="line">Executing: /lib/systemd/systemd<span class="literal">-sysv-install</span> enable elasticsearch</span><br><span class="line">Created symlink /etc/systemd/system/multi<span class="literal">-user</span>.target.wants/elasticsearch.service → /lib/systemd/system/elasticsearch.service.</span><br></pre></td></tr></table></figure>
-
-<p>서비스를 시작한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo systemctl <span class="built_in">start</span> elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p>실제 서비스가 작동하는지 확인한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">curl</span> <span class="literal">-X</span> GET <span class="string">&quot;localhost:9200/&quot;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span> : <span class="string">&quot;XXXX&quot;</span>,</span><br><span class="line">  <span class="string">&quot;cluster_name&quot;</span> : <span class="string">&quot;elasticsearch&quot;</span>,</span><br><span class="line">  <span class="string">&quot;cluster_uuid&quot;</span> : <span class="string">&quot;vATWEOO1T9yOFGLc7G3L4w&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span> : &#123;</span><br><span class="line">    <span class="string">&quot;number&quot;</span> : <span class="string">&quot;7.17.2&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build_flavor&quot;</span> : <span class="string">&quot;default&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build_type&quot;</span> : <span class="string">&quot;deb&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build_hash&quot;</span> : <span class="string">&quot;de7261de50d90919ae53b0eff9413fd7e5307301&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build_date&quot;</span> : <span class="string">&quot;2022-03-28T15:12:21.446567561Z&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build_snapshot&quot;</span> : false,</span><br><span class="line">    <span class="string">&quot;lucene_version&quot;</span> : <span class="string">&quot;8.11.1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;minimum_wire_compatibility_version&quot;</span> : <span class="string">&quot;6.8.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;minimum_index_compatibility_version&quot;</span> : <span class="string">&quot;6.0.0-beta1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;tagline&quot;</span> : <span class="string">&quot;You Know, for Search&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>만약 위와 같은 메시지가 뜨면, 윈도우 화면에서 재 확인해본다.</p>
-<p><img src="/images/ElasticSearchKibana/Untitled.png" alt="Untitled"><br>images&#x2F;ElasticSearchKibana</p>
-<h1 id="Step-4-Kibana-설치-및-서비스-시작"><a href="#Step-4-Kibana-설치-및-서비스-시작" class="headerlink" title="Step 4. Kibana 설치 및 서비스 시작"></a><strong>Step 4. Kibana 설치 및 서비스 시작</strong></h1><p>우선 kibana를 설치한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo apt<span class="literal">-get</span> install kibana</span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree</span><br><span class="line">Reading state information... Done</span><br><span class="line">The following NEW packages will be installed:</span><br><span class="line">  kibana</span><br><span class="line"><span class="number">0</span> upgraded, <span class="number">1</span> newly installed, <span class="number">0</span> to remove and <span class="number">0</span> not upgraded.</span><br><span class="line">Need to get <span class="number">286</span> MB of archives.</span><br><span class="line">After this operation, <span class="number">771</span> MB of additional disk space will be used.</span><br><span class="line">Get:<span class="number">1</span> https://artifacts.elastic.co/packages/<span class="number">7</span>.x/apt stable/main amd64 kibana amd64 <span class="number">7.17</span>.<span class="number">2</span> [<span class="number">286</span> <span class="type">MB</span>]</span><br><span class="line">Fetched <span class="number">286</span> MB <span class="keyword">in</span> <span class="number">7</span>s (<span class="number">42.5</span> MB/s)</span><br><span class="line">Selecting previously unselected package kibana.</span><br><span class="line">(Reading database ... <span class="number">34067</span> files and directories currently installed.)</span><br><span class="line">Preparing to unpack .../kibana_7.<span class="number">17.2</span>_amd64.deb ...</span><br><span class="line">Unpacking kibana (<span class="number">7.17</span>.<span class="number">2</span>) ...</span><br><span class="line">Setting up kibana (<span class="number">7.17</span>.<span class="number">2</span>) ...</span><br><span class="line">Creating kibana <span class="built_in">group</span>... OK</span><br><span class="line">Creating kibana user... OK</span><br><span class="line">Created Kibana keystore <span class="keyword">in</span> /etc/kibana/kibana.keystore</span><br><span class="line">Processing triggers <span class="keyword">for</span> systemd (<span class="number">245.4</span><span class="literal">-4ubuntu3</span>.<span class="number">15</span>) ...</span><br></pre></td></tr></table></figure>
-
-<p>서비스를 활성화 한다.</p>
-<ul>
-<li>서비스를 시작하고, 확인해본다.</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo systemctl <span class="built_in">start</span> kibana</span><br><span class="line"><span class="variable">$</span> sudo systemctl status kibana</span><br><span class="line">● kibana.service - Kibana</span><br><span class="line">     Loaded: loaded (/etc/systemd/system/kibana.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: active (running) since Sat <span class="number">2022</span><span class="literal">-04-09</span> <span class="number">00</span>:<span class="number">41</span>:<span class="number">40</span> KST; <span class="number">12</span>s ago</span><br><span class="line">       Docs: https://www.elastic.co</span><br><span class="line">   Main PID: <span class="number">4203</span> (node)</span><br><span class="line">      Tasks: <span class="number">11</span> (limit: <span class="number">9370</span>)</span><br><span class="line">     Memory: <span class="number">670.7</span>M</span><br><span class="line">     CGroup: /system.slice/kibana.service</span><br><span class="line">             └─<span class="number">4203</span> /usr/share/kibana/bin/../node/bin/node /usr/share/kibana/bin/../src/<span class="built_in">cli</span>/dist <span class="literal">--logging</span>.dest=/var/lo&gt;</span><br><span class="line"></span><br><span class="line">Apr <span class="number">09</span> <span class="number">00</span>:<span class="number">41</span>:<span class="number">40</span> evan systemd[<span class="number">1</span>]: Started Kibana.</span><br></pre></td></tr></table></figure>
-
-<h1 id="Step-5-Kibana-WebUI-확인"><a href="#Step-5-Kibana-WebUI-확인" class="headerlink" title="Step 5. Kibana WebUI 확인"></a><strong>Step 5. Kibana WebUI 확인</strong></h1><p><strong><a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601/</a></strong> 에서 확인해본다.</p>
-<p><img src="https://dschloe.github.io/img/settings/elasticsearch_kibana_wsl2/Untitled%201.png" alt="https://dschloe.github.io/img/settings/elasticsearch_kibana_wsl2/Untitled%201.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1523,7 +1493,7 @@ float, double
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
