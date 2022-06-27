@@ -155,6 +155,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/05/02/Airflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CHAEEUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHAEEUN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/02/Airflow/" class="post-title-link" itemprop="url">Airflow 데이터 파이프라인 구축 예제</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-02 17:10:05" itemprop="dateCreated datePublished" datetime="2022-05-02T17:10:05+09:00">2022-05-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-03 11:26:47" itemprop="dateModified" datetime="2022-05-03T11:26:47+09:00">2022-05-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Setting/" itemprop="url" rel="index"><span itemprop="name">Setting</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Step-01-Dags-폴더-생성"><a href="#Step-01-Dags-폴더-생성" class="headerlink" title="Step 01. Dags 폴더 생성"></a><strong>Step 01. Dags 폴더 생성</strong></h1><p>프로젝트 폴더(&#x3D;airflow) 하단에 Dags 폴더를 만든다.</p>
+<ul>
+<li>dags 폴더를 확인한다.</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">ls</span></span><br><span class="line">airflow.cfg  airflow.db  dags  logs  venv  webserver_config.py</span><br></pre></td></tr></table></figure>
+
+<h1 id="Step-02-가상의-데이터-생성"><a href="#Step-02-가상의-데이터-생성" class="headerlink" title="Step 02. 가상의 데이터 생성"></a><strong>Step 02. 가상의 데이터 생성</strong></h1><p>이번 테스트에서 사용할 라이브러리가 없다면 우선 설치한다.</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> pip3 install faker pandas</span><br></pre></td></tr></table></figure>
+
+<p>faker 라이브러리를 활용하여 가상의 데이터를 생성한다. (파일 경로 : data&#x2F;step01_writecsv.py)</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from faker import Faker</span><br><span class="line">import csv</span><br><span class="line">output=open(<span class="string">&#x27;data.csv&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">fake=Faker()</span><br><span class="line">header=[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;age&#x27;</span>,<span class="string">&#x27;street&#x27;</span>,<span class="string">&#x27;city&#x27;</span>,<span class="string">&#x27;state&#x27;</span>,<span class="string">&#x27;zip&#x27;</span>,<span class="string">&#x27;lng&#x27;</span>,<span class="string">&#x27;lat&#x27;</span>]</span><br><span class="line">mywriter=csv.writer(output)</span><br><span class="line">mywriter.writerow(header)</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">r</span> <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    mywriter.writerow([<span class="type">fake.name</span>(),<span class="type">fake.random_int</span>(<span class="type">min</span>=<span class="number">18</span>, <span class="type">max</span>=<span class="number">80</span>, <span class="type">step</span>=<span class="number">1</span>), <span class="type">fake.street_address</span>(), <span class="type">fake.city</span>(),<span class="type">fake.state</span>(),<span class="type">fake.zipcode</span>(),<span class="type">fake.longitude</span>(),<span class="type">fake.latitude</span>()])</span><br><span class="line">output.close()</span><br></pre></td></tr></table></figure>
+
+<p>생성된 후, 파일을 확인하도록 한다.</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xiromjr@xiromjr:/mnt/c/airflow<span class="literal">-test</span>/<span class="keyword">data</span><span class="variable">$</span> <span class="built_in">ls</span></span><br><span class="line">data.csv  step01_writecsv.py</span><br></pre></td></tr></table></figure>
+
+<h1 id="Step-03-csv2json-파일-구축"><a href="#Step-03-csv2json-파일-구축" class="headerlink" title="Step 03. csv2json 파일 구축"></a><strong>Step 03. csv2json 파일 구축</strong></h1><p>이번에는 CSV와 JSON 변환 파일을 구축하는 코드를 작성한다. (파일 경로 : dags&#x2F;<strong><a target="_blank" rel="noopener" href="http://csv2json.py/">csv2json.py</a></strong>)\</p>
+<p>주요 목적 함수 csvToJson()의 역할은 <code>data/data.csv</code> 파일을 불러와서 <code>fromAirflow.json</code> 파일로 변경하는 것이다.</p>
+<p>DAG는 csvToJson 함수를 하나의 작업으로 등록하는 과정을 담는다. 작업의 소유자, 시작일시, 실패 시 재시도 횟수, 재시도 지연시 시간을 지정한다.</p>
+<ul>
+<li>자세한 옵션은 도움말을 참조한다. <strong><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html">https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html</a></strong></li>
+</ul>
+<p><code>print_starting &gt;&gt; csvJson</code> 에서 <code>&gt;&gt;</code> 는 하류 설정 연산자라고 부른다. (동의어 비트 자리이동 연산자)</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import libaries</span></span><br><span class="line">import datetime as dt </span><br><span class="line">from datetime import timedelta </span><br><span class="line"></span><br><span class="line">from airflow import DAG</span><br><span class="line">from airflow.operators.bash import BashOperator</span><br><span class="line">from airflow.operators.python import PythonOperator</span><br><span class="line"></span><br><span class="line">import pandas as pd </span><br><span class="line"></span><br><span class="line"><span class="comment"># load data</span></span><br><span class="line">def csvToJson():</span><br><span class="line">    df = pd.read_csv(<span class="string">&#x27;data.csv&#x27;</span>)</span><br><span class="line">    <span class="comment"># print(df.info())</span></span><br><span class="line">    <span class="keyword">for</span> i, <span class="built_in">r</span> <span class="keyword">in</span> df.iterrows():</span><br><span class="line">        print(<span class="built_in">r</span>[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Export JSON</span></span><br><span class="line">    df.to_json(<span class="string">&#x27;fromAirflow.json&#x27;</span>, orient=<span class="string">&quot;records&quot;</span>)</span><br><span class="line"></span><br><span class="line">default_args = &#123;</span><br><span class="line">    <span class="string">&#x27;owner&#x27;</span> : <span class="string">&#x27;evan&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;start_date&#x27;</span> : dt.datetime(<span class="number">2020</span>, <span class="number">3</span>, <span class="number">18</span>), </span><br><span class="line">    <span class="string">&#x27;retries&#x27;</span> : <span class="number">1</span>, </span><br><span class="line">    <span class="string">&#x27;retry_delay&#x27;</span> : dt.timedelta(minutes=<span class="number">5</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 참조 : https://ponyozzang.tistory.com/402</span></span><br><span class="line">with DAG(<span class="string">&#x27;MyCSVDAG&#x27;</span>, </span><br><span class="line">            default_args=default_args, </span><br><span class="line">            schedule_interval=timedelta(minutes=<span class="number">5</span>), </span><br><span class="line">            <span class="comment"># &#x27;0 * * * *&#x27;</span></span><br><span class="line">        ) as dag:</span><br><span class="line">    print_starting = BashOperator(task_id = <span class="string">&quot;starting&quot;</span>, </span><br><span class="line">                                  bash_command=<span class="string">&#x27;echo &quot;I am reading the CSV now......&quot;&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    CSVJson = PythonOperator(task_id = <span class="string">&quot;convertCSVtoJson&quot;</span>, </span><br><span class="line">                             python_callable=csvToJson)</span><br><span class="line"></span><br><span class="line">print_starting &gt;&gt; CSVJson</span><br><span class="line"></span><br><span class="line"><span class="comment"># if __name__ == &quot;__main__&quot;:</span></span><br><span class="line"><span class="comment">#    csvToJson()</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Step-04-Airflow-Webserver-및-Scheduler-동시-실행"><a href="#Step-04-Airflow-Webserver-및-Scheduler-동시-실행" class="headerlink" title="Step 04. Airflow Webserver 및 Scheduler 동시 실행"></a><strong>Step 04. Airflow Webserver 및 Scheduler 동시 실행</strong></h1><p>이제 웹서버와 스케쥴러를 동시에 실행한다. (터미널을 2개 열어야 함에 주의한다.)</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> airflow webserver <span class="literal">-p</span> <span class="number">8080</span></span><br><span class="line"><span class="variable">$</span> airflow scheduler</span><br></pre></td></tr></table></figure>
+
+<p>이제 WebUI를 확인하면 정상적으로 작동하는 것을 확인할 수 있다.</p>
+<p><img src="/images/Airflow/Untitled.png" alt="Untitled"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/05/02/Apache%20NiFi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1502,171 +1604,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/05/02/prec/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="CHAEEUN">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHAEEUN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/02/prec/" class="post-title-link" itemprop="url">연습문제</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-02 17:10:05" itemprop="dateCreated datePublished" datetime="2022-05-02T17:10:05+09:00">2022-05-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-03 12:06:07" itemprop="dateModified" datetime="2022-05-03T12:06:07+09:00">2022-05-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ORACLE/" itemprop="url" rel="index"><span itemprop="name">ORACLE</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="SQL-서브쿼리-연습문제"><a href="#SQL-서브쿼리-연습문제" class="headerlink" title="SQL 서브쿼리 연습문제"></a>SQL 서브쿼리 연습문제</h2><ul>
-<li>문제 1. 2015년 평균 기대수명보다 높은 모든 정보를 조회하세요.<ul>
-<li>테이블명 : populations</li>
-<li>조건식에 서브쿼리를 설정</li>
-<li>메인쿼리 서브쿼리를 구분</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> populations</span><br><span class="line"><span class="keyword">WHERE</span> life_expectancy <span class="operator">&gt;</span> (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(life_expectancy) <span class="keyword">FROM</span> populations <span class="keyword">WHERE</span> <span class="keyword">year</span> <span class="operator">=</span> <span class="number">2015</span>)</span><br><span class="line">	  <span class="keyword">AND</span> <span class="keyword">year</span> <span class="operator">=</span> <span class="number">2015</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/prec/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>문제 2. subquery_countries 테이블에 있는 capital과 매칭되는 cities 테이블의 정보를 조회하세요.<ul>
-<li>조회할 컬럼명은 name, country_code, urbanarea_pop</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, country_code, urbanarea_pop</span><br><span class="line">  <span class="keyword">FROM</span> cities</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="keyword">IN</span></span><br><span class="line">  (<span class="keyword">SELECT</span> capital</span><br><span class="line">   <span class="keyword">FROM</span> countriesdb)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> urbanarea_pop <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/prec/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li>문제 3.<ul>
-<li>조건 1. economies 테이블에서 country code, inflation rate, unemployment rate를 조회한다.</li>
-<li>조건 2. inflation rate 오름차순으로 정렬한다.</li>
-<li>조건 3. subquery_countries 테이블내 gov_form 컬럼에서 Constitutional Monarchy 또는 <code>Republic</code>이 들어간 국가는 제외한다.<br>  – Select fields<br>  – 데이터셋</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> code, inflation_rate, unemployment_rate</span><br><span class="line"><span class="keyword">FROM</span> economies</span><br><span class="line">  <span class="keyword">WHERE</span> <span class="keyword">year</span> <span class="operator">=</span> <span class="number">2015</span> <span class="keyword">AND</span> code <span class="keyword">NOT</span> <span class="keyword">IN</span></span><br><span class="line">  	(<span class="keyword">SELECT</span> code</span><br><span class="line">  	 <span class="keyword">FROM</span> countriesdb</span><br><span class="line">  	 <span class="keyword">WHERE</span> (GOV_FORM <span class="operator">=</span> <span class="string">&#x27;Constitutional Monarchy&#x27;</span> <span class="keyword">OR</span> GOV_FORM <span class="keyword">LIKE</span> <span class="string">&#x27;%Republic%&#x27;</span>))</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> inflation_rate;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/prec/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>문제 4. 2010년 각 대륙별 inflation_rate가 가장 심한 국가와 inflation_rate를 구하세요.<ul>
-<li>힌트 1. 아래 쿼리 실행</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> country_name, continent, inflation_rate</span><br><span class="line">  <span class="keyword">FROM</span> countriesdb</span><br><span class="line">  	<span class="keyword">INNER</span> <span class="keyword">JOIN</span> economies</span><br><span class="line">    <span class="keyword">USING</span> (code)</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">year</span> <span class="operator">=</span> <span class="number">2010</span>;</span><br></pre></td></tr></table></figure>
-
-<p>각 대륙별 inflation_rate가 가장 높은 나라를 추출하는 코드를 작성한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> sc.country_name, sc.continent, ec.inflation_rate</span><br><span class="line">  <span class="keyword">FROM</span> countriesdb sc</span><br><span class="line">	<span class="keyword">INNER</span> <span class="keyword">JOIN</span> economies ec</span><br><span class="line">	<span class="keyword">ON</span> sc.code <span class="operator">=</span> ec.code</span><br><span class="line">  <span class="keyword">WHERE</span> <span class="keyword">year</span> <span class="operator">=</span> <span class="number">2015</span></span><br><span class="line">    <span class="keyword">AND</span> inflation_rate <span class="keyword">IN</span> (</span><br><span class="line">        <span class="keyword">SELECT</span> <span class="built_in">MAX</span>(inflation_rate) <span class="keyword">AS</span> max_inf</span><br><span class="line">        <span class="keyword">FROM</span> (</span><br><span class="line">             <span class="keyword">SELECT</span> sc.country_name, sc.continent, ec.inflation_rate</span><br><span class="line">             <span class="keyword">FROM</span> countriesdb sc</span><br><span class="line">             <span class="keyword">INNER</span> <span class="keyword">JOIN</span> economies ec</span><br><span class="line">             <span class="comment">-- Using(code) 대신 ON 쿼리를 작성합니다.</span></span><br><span class="line">             <span class="keyword">ON</span> sc.code <span class="operator">=</span> ec.code</span><br><span class="line">             <span class="keyword">WHERE</span> <span class="keyword">year</span> <span class="operator">=</span> <span class="number">2015</span>)</span><br><span class="line">        <span class="keyword">GROUP</span> <span class="keyword">BY</span> continent);</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/prec/Untitled%203.png" alt="Untitled"></p>
-<h2 id="SQL-윈도우-함수-연습문제"><a href="#SQL-윈도우-함수-연습문제" class="headerlink" title="SQL 윈도우 함수 연습문제"></a>SQL 윈도우 함수 연습문제</h2><ul>
-<li>문제 1. 각 행에 숫자를 1, 2, 3, …, 형태로 추가한다. (row_n 으로 표시)<ul>
-<li>row_n 기준으로 오름차순으로 출력</li>
-<li>테이블명에 alias를 적용한다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    ROWNUM <span class="keyword">as</span> row_n</span><br><span class="line">    , sm.<span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> summer_medals sm;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/prec/Untitled%204.png" alt="Untitled"></p>
-<ul>
-<li>문제 2. 올림픽 년도를 오름차순 순번대로 작성을 한다.<ul>
-<li>힌트 : 서브쿼리와 윈도우 함수를 이용한다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    <span class="keyword">Year</span>, </span><br><span class="line">    <span class="built_in">ROW_NUMBER</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">Year</span>) <span class="keyword">AS</span> Row_N</span><br><span class="line"><span class="keyword">FROM</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">Year</span></span><br><span class="line">    <span class="keyword">FROM</span> summer_medals</span><br><span class="line">) Years;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/prec/Untitled%205.png" alt="Untitled"></p>
-<ul>
-<li>문제 3.<ul>
-<li>(1) WITH 절 사용하여 각 운동선수들이 획득한 메달 갯수를 내림차순으로 정렬하도록 합니다.</li>
-<li>(2) (1) 쿼리를 활용하여 그리고 선수들의 랭킹을 추가한다.</li>
-<li>상위 5개만 추출 : OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY<br>  – WITH AS (1번 쿼리)<br>  – 2번 쿼리</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> medals <span class="keyword">AS</span> (</span><br><span class="line">  <span class="keyword">SELECT</span></span><br><span class="line">    Athlete,</span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> Medals</span><br><span class="line">  <span class="keyword">FROM</span> summer_medals</span><br><span class="line">  <span class="keyword">GROUP</span> <span class="keyword">BY</span> Athlete)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  Medals, </span><br><span class="line">  Athlete,</span><br><span class="line">  <span class="built_in">ROW_NUMBER</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> Medals <span class="keyword">DESC</span>) <span class="keyword">AS</span> Row_N</span><br><span class="line"><span class="keyword">FROM</span> medals</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Medals <span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">OFFSET</span> <span class="number">0</span> <span class="keyword">ROWS</span> <span class="keyword">FETCH</span> NEXT <span class="number">5</span> <span class="keyword">ROWS</span> <span class="keyword">ONLY</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/prec/Untitled%206.png" alt="Untitled"></p>
-<ul>
-<li>문제 4<ul>
-<li>다음쿼리를 실행한다.</li>
-<li>남자 69KG 역도 경기에서 매년 금메달리스트 조회하도록 합니다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="keyword">Year</span>,</span><br><span class="line">    Country <span class="keyword">AS</span> champion</span><br><span class="line">  <span class="keyword">FROM</span> summer_medals</span><br><span class="line">  <span class="keyword">WHERE</span></span><br><span class="line">    Discipline <span class="operator">=</span> <span class="string">&#x27;Weightlifting&#x27;</span> <span class="keyword">AND</span></span><br><span class="line">    Event <span class="operator">=</span> <span class="string">&#x27;69KG&#x27;</span> <span class="keyword">AND</span></span><br><span class="line">    Gender <span class="operator">=</span> <span class="string">&#x27;Men&#x27;</span> <span class="keyword">AND</span></span><br><span class="line">    Medal <span class="operator">=</span> <span class="string">&#x27;Gold&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/prec/Untitled%207.png" alt="Untitled"></p>
-<ul>
-<li>기존 쿼리에서 매년 전년도 챔피언도 같이 조회하도록 합니다.<ul>
-<li>LAG &amp; WITH 절 사용</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> Weightlifting_Gold <span class="keyword">AS</span> (</span><br><span class="line">  <span class="keyword">SELECT</span></span><br><span class="line">    <span class="comment">-- Return each year&#x27;s champions&#x27; countries</span></span><br><span class="line">    <span class="keyword">Year</span>,</span><br><span class="line">    Country <span class="keyword">AS</span> champion</span><br><span class="line">  <span class="keyword">FROM</span> summer_medals</span><br><span class="line">  <span class="keyword">WHERE</span></span><br><span class="line">    Discipline <span class="operator">=</span> <span class="string">&#x27;Weightlifting&#x27;</span> <span class="keyword">AND</span></span><br><span class="line">    Event <span class="operator">=</span> <span class="string">&#x27;69KG&#x27;</span> <span class="keyword">AND</span></span><br><span class="line">    Gender <span class="operator">=</span> <span class="string">&#x27;Men&#x27;</span> <span class="keyword">AND</span></span><br><span class="line">    Medal <span class="operator">=</span> <span class="string">&#x27;Gold&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  <span class="keyword">Year</span>, Champion,</span><br><span class="line">  <span class="built_in">LAG</span>(Champion) <span class="keyword">OVER</span></span><br><span class="line">    (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">Year</span> <span class="keyword">ASC</span>) <span class="keyword">AS</span> Last_Champion</span><br><span class="line"><span class="keyword">FROM</span> Weightlifting_Gold</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">Year</span> <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/prec/Untitled%208.png" alt="Untitled"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1736,7 +1673,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

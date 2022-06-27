@@ -155,6 +155,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/06/27/0627/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CHAEEUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHAEEUN">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/27/0627/" class="post-title-link" itemprop="url">0627 자바 공부</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-06-27 17:09:05 / Modified: 17:09:44" itemprop="dateCreated datePublished" datetime="2022-06-27T17:09:05+09:00">2022-06-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="학습"><a href="#학습" class="headerlink" title="학습"></a>학습</h1><ul>
+<li><p>jsp란 무엇인가?</p>
+<p>  Java Server Page</p>
+</li>
+<li><p>왜 jsp를 쓰는가?</p>
+<p>  자바로 웹페이지를 만들때 서블릿을 쓰는데<br>  서블릿은 프론트 개발자와 백엔드 개발자의 협업이 쉽지 않은 단점이 있기 때문에 jsp사용</p>
+<p>  mvc패턴. model view controller 로 나눠서 개발.</p>
+</li>
+<li><p>jsp파일을 만들려면 어떻게 하는가?</p>
+<p>  확장자를 .jsp로 만들고<br>  페이지 제일 위에 &lt;%@ page language&#x3D;”java” contentType&#x3D;”text&#x2F;html; charset&#x3D;UTF-8”<br>  pageEncoding&#x3D;”UTF-8”%&gt;</p>
+</li>
+<li><p>jsp의 화면단에서 백엔드단으로 데이터를 전송하려면 어떻게 하는가?</p>
+<p>  어디로? form의 action으로</p>
+<p>  어떤 정보를 가지고 가는가?  form안에 있는 모든 데이터들을 name이름으로 감싸서</p>
+</li>
+<li><p>jsp에서 DAO는 무엇인가?</p>
+<p>  Data Access Object</p>
+<p>  자바에서 DB에 접속할때 쓰는 객체</p>
+</li>
+<li><p>데이터베이스를 연결하는법</p>
+<p>  Connection 연결, PreparedStatement 설정, resultSet 받기</p>
+</li>
+<li><p>데이터베이스에 쿼리를 실행하는법</p>
+<p>  pstmt.executeQuery();</p>
+</li>
+<li><p>쿼리 실행한 결과를 다시 화면으로 보내는법</p>
+<p>  jsp끼리 데이터전송 :</p>
+<p>  객체로 보낼려면 bean써서 setProperty<br>  변수만 보낼려면 name값 그대로<br>  alert띄우는건 PrintWriter 객체로 <script>에 alert</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/06/24/0624/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1377,108 +1474,6 @@ float, double
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/05/02/Airflow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="CHAEEUN">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHAEEUN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/02/Airflow/" class="post-title-link" itemprop="url">Airflow 데이터 파이프라인 구축 예제</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-02 17:10:05" itemprop="dateCreated datePublished" datetime="2022-05-02T17:10:05+09:00">2022-05-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-03 11:26:47" itemprop="dateModified" datetime="2022-05-03T11:26:47+09:00">2022-05-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Setting/" itemprop="url" rel="index"><span itemprop="name">Setting</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Step-01-Dags-폴더-생성"><a href="#Step-01-Dags-폴더-생성" class="headerlink" title="Step 01. Dags 폴더 생성"></a><strong>Step 01. Dags 폴더 생성</strong></h1><p>프로젝트 폴더(&#x3D;airflow) 하단에 Dags 폴더를 만든다.</p>
-<ul>
-<li>dags 폴더를 확인한다.</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">ls</span></span><br><span class="line">airflow.cfg  airflow.db  dags  logs  venv  webserver_config.py</span><br></pre></td></tr></table></figure>
-
-<h1 id="Step-02-가상의-데이터-생성"><a href="#Step-02-가상의-데이터-생성" class="headerlink" title="Step 02. 가상의 데이터 생성"></a><strong>Step 02. 가상의 데이터 생성</strong></h1><p>이번 테스트에서 사용할 라이브러리가 없다면 우선 설치한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> pip3 install faker pandas</span><br></pre></td></tr></table></figure>
-
-<p>faker 라이브러리를 활용하여 가상의 데이터를 생성한다. (파일 경로 : data&#x2F;step01_writecsv.py)</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from faker import Faker</span><br><span class="line">import csv</span><br><span class="line">output=open(<span class="string">&#x27;data.csv&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">fake=Faker()</span><br><span class="line">header=[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;age&#x27;</span>,<span class="string">&#x27;street&#x27;</span>,<span class="string">&#x27;city&#x27;</span>,<span class="string">&#x27;state&#x27;</span>,<span class="string">&#x27;zip&#x27;</span>,<span class="string">&#x27;lng&#x27;</span>,<span class="string">&#x27;lat&#x27;</span>]</span><br><span class="line">mywriter=csv.writer(output)</span><br><span class="line">mywriter.writerow(header)</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">r</span> <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    mywriter.writerow([<span class="type">fake.name</span>(),<span class="type">fake.random_int</span>(<span class="type">min</span>=<span class="number">18</span>, <span class="type">max</span>=<span class="number">80</span>, <span class="type">step</span>=<span class="number">1</span>), <span class="type">fake.street_address</span>(), <span class="type">fake.city</span>(),<span class="type">fake.state</span>(),<span class="type">fake.zipcode</span>(),<span class="type">fake.longitude</span>(),<span class="type">fake.latitude</span>()])</span><br><span class="line">output.close()</span><br></pre></td></tr></table></figure>
-
-<p>생성된 후, 파일을 확인하도록 한다.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xiromjr@xiromjr:/mnt/c/airflow<span class="literal">-test</span>/<span class="keyword">data</span><span class="variable">$</span> <span class="built_in">ls</span></span><br><span class="line">data.csv  step01_writecsv.py</span><br></pre></td></tr></table></figure>
-
-<h1 id="Step-03-csv2json-파일-구축"><a href="#Step-03-csv2json-파일-구축" class="headerlink" title="Step 03. csv2json 파일 구축"></a><strong>Step 03. csv2json 파일 구축</strong></h1><p>이번에는 CSV와 JSON 변환 파일을 구축하는 코드를 작성한다. (파일 경로 : dags&#x2F;<strong><a target="_blank" rel="noopener" href="http://csv2json.py/">csv2json.py</a></strong>)\</p>
-<p>주요 목적 함수 csvToJson()의 역할은 <code>data/data.csv</code> 파일을 불러와서 <code>fromAirflow.json</code> 파일로 변경하는 것이다.</p>
-<p>DAG는 csvToJson 함수를 하나의 작업으로 등록하는 과정을 담는다. 작업의 소유자, 시작일시, 실패 시 재시도 횟수, 재시도 지연시 시간을 지정한다.</p>
-<ul>
-<li>자세한 옵션은 도움말을 참조한다. <strong><a target="_blank" rel="noopener" href="https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html">https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html</a></strong></li>
-</ul>
-<p><code>print_starting &gt;&gt; csvJson</code> 에서 <code>&gt;&gt;</code> 는 하류 설정 연산자라고 부른다. (동의어 비트 자리이동 연산자)</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import libaries</span></span><br><span class="line">import datetime as dt </span><br><span class="line">from datetime import timedelta </span><br><span class="line"></span><br><span class="line">from airflow import DAG</span><br><span class="line">from airflow.operators.bash import BashOperator</span><br><span class="line">from airflow.operators.python import PythonOperator</span><br><span class="line"></span><br><span class="line">import pandas as pd </span><br><span class="line"></span><br><span class="line"><span class="comment"># load data</span></span><br><span class="line">def csvToJson():</span><br><span class="line">    df = pd.read_csv(<span class="string">&#x27;data.csv&#x27;</span>)</span><br><span class="line">    <span class="comment"># print(df.info())</span></span><br><span class="line">    <span class="keyword">for</span> i, <span class="built_in">r</span> <span class="keyword">in</span> df.iterrows():</span><br><span class="line">        print(<span class="built_in">r</span>[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Export JSON</span></span><br><span class="line">    df.to_json(<span class="string">&#x27;fromAirflow.json&#x27;</span>, orient=<span class="string">&quot;records&quot;</span>)</span><br><span class="line"></span><br><span class="line">default_args = &#123;</span><br><span class="line">    <span class="string">&#x27;owner&#x27;</span> : <span class="string">&#x27;evan&#x27;</span>, </span><br><span class="line">    <span class="string">&#x27;start_date&#x27;</span> : dt.datetime(<span class="number">2020</span>, <span class="number">3</span>, <span class="number">18</span>), </span><br><span class="line">    <span class="string">&#x27;retries&#x27;</span> : <span class="number">1</span>, </span><br><span class="line">    <span class="string">&#x27;retry_delay&#x27;</span> : dt.timedelta(minutes=<span class="number">5</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 참조 : https://ponyozzang.tistory.com/402</span></span><br><span class="line">with DAG(<span class="string">&#x27;MyCSVDAG&#x27;</span>, </span><br><span class="line">            default_args=default_args, </span><br><span class="line">            schedule_interval=timedelta(minutes=<span class="number">5</span>), </span><br><span class="line">            <span class="comment"># &#x27;0 * * * *&#x27;</span></span><br><span class="line">        ) as dag:</span><br><span class="line">    print_starting = BashOperator(task_id = <span class="string">&quot;starting&quot;</span>, </span><br><span class="line">                                  bash_command=<span class="string">&#x27;echo &quot;I am reading the CSV now......&quot;&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    CSVJson = PythonOperator(task_id = <span class="string">&quot;convertCSVtoJson&quot;</span>, </span><br><span class="line">                             python_callable=csvToJson)</span><br><span class="line"></span><br><span class="line">print_starting &gt;&gt; CSVJson</span><br><span class="line"></span><br><span class="line"><span class="comment"># if __name__ == &quot;__main__&quot;:</span></span><br><span class="line"><span class="comment">#    csvToJson()</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Step-04-Airflow-Webserver-및-Scheduler-동시-실행"><a href="#Step-04-Airflow-Webserver-및-Scheduler-동시-실행" class="headerlink" title="Step 04. Airflow Webserver 및 Scheduler 동시 실행"></a><strong>Step 04. Airflow Webserver 및 Scheduler 동시 실행</strong></h1><p>이제 웹서버와 스케쥴러를 동시에 실행한다. (터미널을 2개 열어야 함에 주의한다.)</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> airflow webserver <span class="literal">-p</span> <span class="number">8080</span></span><br><span class="line"><span class="variable">$</span> airflow scheduler</span><br></pre></td></tr></table></figure>
-
-<p>이제 WebUI를 확인하면 정상적으로 작동하는 것을 확인할 수 있다.</p>
-<p><img src="/images/Airflow/Untitled.png" alt="Untitled"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1548,7 +1543,7 @@ float, double
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
