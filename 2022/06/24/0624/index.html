@@ -20,16 +20,15 @@
     var CONFIG = {"hostname":"hce2.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="학업재귀함수 : 자신을 정의할때 자신을 리턴하는 함수. 다시(재) 귀환(귀)하는 함수.  개념을 자신감 있게 말할 수 있도록!!! ***** 면접 단골 질문 ***** 데이터타입(원시형, 참초형) 객체, 클래스, 인스턴스 생성자 추상클래스, 인터페이스 오버라이드, 오버로드 배열, 리스트   ** 설계를 위한 정보 뽑기** “판매실적” 테이블을 만들어야한다.">
+  <meta name="description" content="학습&lt;오전&gt; 스트림, 파일입출력 싱클톤 디자인 패턴(생성자를 private로 만들어서 외부에서 만들 수 없도록) &#x2F;&#x2F; 하나의 인스턴스만 있으면 되는 상황. &#x2F;&#x2F; 예 : 게임으로 치면 보스몹  db연결하는 객체   로거  깃, 소스트리 설치 : 구글에서 git, sourcetree (반드시 깃 먼저 깔고 소스트리">
 <meta property="og:type" content="article">
-<meta property="og:title" content="0621 자바 공부">
-<meta property="og:url" content="https://hce2.github.io/2022/06/21/0621/index.html">
+<meta property="og:title" content="0624 자바 공부">
+<meta property="og:url" content="https://hce2.github.io/2022/06/24/0624/index.html">
 <meta property="og:site_name" content="CHAEEUN">
-<meta property="og:description" content="학업재귀함수 : 자신을 정의할때 자신을 리턴하는 함수. 다시(재) 귀환(귀)하는 함수.  개념을 자신감 있게 말할 수 있도록!!! ***** 면접 단골 질문 ***** 데이터타입(원시형, 참초형) 객체, 클래스, 인스턴스 생성자 추상클래스, 인터페이스 오버라이드, 오버로드 배열, 리스트   ** 설계를 위한 정보 뽑기** “판매실적” 테이블을 만들어야한다.">
+<meta property="og:description" content="학습&lt;오전&gt; 스트림, 파일입출력 싱클톤 디자인 패턴(생성자를 private로 만들어서 외부에서 만들 수 없도록) &#x2F;&#x2F; 하나의 인스턴스만 있으면 되는 상황. &#x2F;&#x2F; 예 : 게임으로 치면 보스몹  db연결하는 객체   로거  깃, 소스트리 설치 : 구글에서 git, sourcetree (반드시 깃 먼저 깔고 소스트리">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://hce2.github.io/images/0621/Untitled.png">
-<meta property="article:published_time" content="2022-06-21T07:37:05.000Z">
-<meta property="article:modified_time" content="2022-06-24T00:11:32.850Z">
+<meta property="article:published_time" content="2022-06-24T04:46:05.000Z">
+<meta property="article:modified_time" content="2022-06-26T23:59:24.166Z">
 <meta property="article:author" content="CHAEEUN">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Github">
@@ -37,9 +36,8 @@
 <meta property="article:tag" content="헥소">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hce2.github.io/images/0621/Untitled.png">
 
-<link rel="canonical" href="https://hce2.github.io/2022/06/21/0621/">
+<link rel="canonical" href="https://hce2.github.io/2022/06/24/0624/">
 
 
 <script id="page-configurations">
@@ -52,7 +50,7 @@
   };
 </script>
 
-  <title>0621 자바 공부 | CHAEEUN</title>
+  <title>0624 자바 공부 | CHAEEUN</title>
   
 
 
@@ -167,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/06/21/0621/">
+    <link itemprop="mainEntityOfPage" href="https://hce2.github.io/2022/06/24/0624/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -180,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          0621 자바 공부
+          0624 자바 공부
         </h1>
 
         <div class="post-meta">
@@ -190,14 +188,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-06-21 16:37:05" itemprop="dateCreated datePublished" datetime="2022-06-21T16:37:05+09:00">2022-06-21</time>
+              <time title="Created: 2022-06-24 13:46:05" itemprop="dateCreated datePublished" datetime="2022-06-24T13:46:05+09:00">2022-06-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-24 09:11:32" itemprop="dateModified" datetime="2022-06-24T09:11:32+09:00">2022-06-24</time>
+                <time title="Modified: 2022-06-27 08:59:24" itemprop="dateModified" datetime="2022-06-27T08:59:24+09:00">2022-06-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -220,43 +218,51 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="학업"><a href="#학업" class="headerlink" title="학업"></a>학업</h1><p>재귀함수 :</p>
-<p>자신을 정의할때 자신을 리턴하는 함수. 다시(재) 귀환(귀)하는 함수.</p>
+        <h1 id="학습"><a href="#학습" class="headerlink" title="학습"></a>학습</h1><p>&lt;오전&gt;</p>
+<p>스트림, 파일입출력</p>
+<p>싱클톤 디자인 패턴(생성자를 private로 만들어서 외부에서 만들 수 없도록)</p>
+<p>&#x2F;&#x2F; 하나의 인스턴스만 있으면 되는 상황.</p>
+<p>&#x2F;&#x2F; 예 : 게임으로 치면 보스몹</p>
+<pre><code> db연결하는 객체
+
+ 로거
+</code></pre>
+<p>깃, 소스트리</p>
+<p>설치 : 구글에서 git, sourcetree (반드시 깃 먼저 깔고 소스트리 깔아야함)</p>
+<p>git 은 디폴트 그대로 다음다음다음</p>
+<p>sourcetree는 (건너뛰기 mercury 체크 빼고 다음 ssh키 → 아니오)</p>
 <hr>
-<p>개념을 자신감 있게 말할 수 있도록!!!</p>
-<p>***** 면접 단골 질문 *****</p>
-<p>데이터타입(원시형, 참초형)</p>
-<p>객체, 클래스, 인스턴스</p>
-<p>생성자</p>
-<p>추상클래스, 인터페이스</p>
-<p>오버라이드, 오버로드</p>
-<p>배열, 리스트</p>
+<p>소스트리를 열어서 내가 관리하고 싶은 파일을 지정</p>
+<p>추정되지 않은 파일 스테이지로 올려서 커밋하기(세이브파일 자주 만들기)</p>
+<p>백업하고 싶은 파일로 더블클릭해서 돌아감, 청소에 체크를 하면 역사가 지워지니 누르지마세요</p>
 <hr>
-<hr>
-<p>** 설계를 위한 정보 뽑기**</p>
-<p>“판매실적” 테이블을 만들어야한다. 기본키는 뭘로되어야할까?</p>
-<p>→ 설계자 : 현재로서는 답을 할 수 없습니다. 정확히 어떤 판매실적을 저장하길 원합니까?</p>
-<p>→ 클라이언트 : 누가 언제 어디에 무슨제품을 몇개나 팔았는지 알고싶습니다.</p>
-<p>→ 설계자 : 그거면 진짜로 됩니까? 또 필요한 정보가 뭐가 있습니까?</p>
-<p>→ 클라이언트 : 음..</p>
-<p>→ 설계자 : 언제는 얼만큼 구체적이여야 합니까? 일단위입니까? 분단위입니까? 밀리세컨드? 금액은 필요가 없습니까? 새로운 데이터라는 것을 어떻게 판단할 수 있습니까?</p>
-<p>→ 클라이언트 : 초단위면 될 것 같습니다. 금액은 제품이 무엇인지 알면 자동으로 아는거 아닌가요?  거기에 몇개를 팔았냐가 기록되니까 전체금액을 산정할 수 있을 것 같습니다. 위에서 말한대로 ‘누가’, ‘언제’, ‘어디에’, ‘무엇을’ 이 겹친다면 중복으로 치고 새 데이터로 취급하면 안됩니다.</p>
-<p>→ 설계자 : 모든 컬럼을 뽑아내보겠습니다.</p>
-<p>판매사원, 판매시점, 판매처, 판매상품, 판매갯수, 판매처직원, 정기판매유무</p>
-<p>이 정보말고 추가로 필요한 정보가 있을까요?</p>
-<p>→ 클라이언트 : 없습니다.</p>
-<p>pk는 뭘로되어야 할까? 한 테이블의 유일함을 결정짓는 속성</p>
-<p>판매실적의 유일함을 결정짓는 속성이 뭔가?</p>
-<p>판매시점, 판매상품 → </p>
-<p>배성원 2022년 6월 20일 삼성증권수원점 keykron4 200 홍길동 무</p>
-<p>(<strong>중요</strong>) 목적어 쪽에 부호가 붙는다.</p>
-<p><img src="/images/0621/Untitled.png" alt="Untitled"></p>
-<p>실선일때 :</p>
-<p>삼발이 쪽이 자식</p>
-<p>부모의 글을 지우면 자식 댓글이 다 지워진다.</p>
-<p>댓글이 있다면 글은 반드시 있다.</p>
-<p>점선일때 :</p>
-<p>글을 지워도 댓글은 남아 있다.</p>
+<p>깃헙 &#x3D; 호스팅 사이트. 호스트 &#x3D; 네트워크상의 말단 (끝에있는) 컴퓨터.</p>
+<p>원격으로 접속할 수 있는 컴퓨터를 빌리는 것 &#x3D; 호스팅</p>
+<p>new(초록색 버튼)으로 </p>
+<p>작업에서 로컬로 가는 것이 커밋</p>
+<p>로컬에서 리모트로 가는 것이 푸쉬</p>
+<p>새로운 레파지토리 생성하고 http의 주소를 복사해서</p>
+<p>소스트리의 새로운 탭 만들고 클론 눌러서 아까의 주소 넣어주고 생성하면 정해진 폴더 위치에 깃헙의 새로운 레파지토리의 폴더가 생성된다.</p>
+<p>파일 하나 만들고 밑에 파일에 대한 내용 설명을 쓰고 커밋하면 위의 상단바 푸쉬에 숫자가 뜸 그것을 누르고 깃허브에 올리면 됨</p>
+<p>패치를 눌러 로컬에 새롭게 추가된 파일을 받아온다(새로고침 개념)</p>
+<p>그리고 풀을 눌러 나의 로컬 컴퓨터의 소스를 최신으로 다운로드 한다.</p>
+<p>origin &#x3D; 원격의 파일들이 있는 상태</p>
+<p>이미 최신 버전은 특정 단어가 바뀌어서 리모트에 올라가 있음</p>
+<p>나의 파일이 최신이 아닌 상태에서 위에서 바꾼 단어를 바꿔서 커밋은 가능하나 푸쉬를 하면 에러가 남</p>
+<p>충돌의 경우 : </p>
+<p>파일 상태로 와서 충돌난 파일 우클릭 → 충돌해결(내파일로 할지, 다른 사람 파일로 할지, 수동으로 할지) 결정</p>
+<p>수동으로 할 경우 파일의 꺽새 부분을 지우고 수정후 커밋, 푸쉬</p>
+<p>시간적, 공간적 분리를 해서 코딩</p>
+<p>먼저 ‘공간적 분리’를 함.</p>
+<p>역할분담.</p>
+<p>A라는 사람이 player.class의 담당자라면</p>
+<p>다른 사람은 이 파일 건들지 말기</p>
+<p>만약 같은 파일을 건드려야 한다면 ‘시간적 분리’</p>
+<p>반드시 수정하기 전에 pull부터 하고 작업하는 습관</p>
+<p>이 파일을 건드릴 가능성이 있는 사람에게 내가 puah할때동안 혹시나 그 사람이 push할 가능성 차단</p>
+<p>STS와 연동</p>
+<p>&lt;오후&gt;</p>
+<p>서블릿, JSP</p>
 
     </div>
 
@@ -279,13 +285,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/06/20/0620review/" rel="prev" title="0620 자바 복습">
-      <i class="fa fa-chevron-left"></i> 0620 자바 복습
+    <a href="/2022/06/22/0622review/" rel="prev" title="0622 자바 복습">
+      <i class="fa fa-chevron-left"></i> 0622 자바 복습
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/06/22/0622review/" rel="next" title="0622 자바 복습">
-      0622 자바 복습 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -344,7 +347,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%ED%95%99%EC%97%85"><span class="nav-number">1.</span> <span class="nav-text">학업</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%ED%95%99%EC%8A%B5"><span class="nav-number">1.</span> <span class="nav-text">학습</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
